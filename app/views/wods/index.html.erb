@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Wods</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Result label</th>
+      <th>Workout</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wods.each do |wod| %>
+      <tr>
+        <td><%= wod.description %></td>
+        <td><%= wod.result_label %></td>
+        <td><%= wod.workout %></td>
+        <td><%= link_to 'Show', wod %></td>
+        <td><%= link_to 'Edit', edit_wod_path(wod) %></td>
+        <td><%= link_to 'Destroy', wod, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wod', new_wod_path %>

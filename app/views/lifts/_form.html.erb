@@ -1,0 +1,14 @@
+<%= simple_form_for(@lift) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :type %>
+    <%= f.input :description %>
+    <%= f.input :rep_count %>
+    <%= f.association :workout %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  result_label: MyString
+  workout_id: 
+
+two:
+  description: MyText
+  result_label: MyString
+  workout_id: 
