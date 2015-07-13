@@ -25,10 +25,12 @@ class LiftsController < ApplicationController
   # POST /lifts.json
   def create
     @lift = Lift.new(lift_params)
+    @part = Part.find(@lift.part_id)
+    @workout = Workout.find(@part.workout_id)
 
     respond_to do |format|
       if @lift.save
-        format.html { redirect_to @lift, notice: 'Lift was successfully created.' }
+        format.html { redirect_to @workout, notice: 'Lift was successfully created.' }
         format.json { render :show, status: :created, location: @lift }
       else
         format.html { render :new }
@@ -69,6 +71,6 @@ class LiftsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lift_params
-      params.require(:lift).permit(:type, :description, :rep_count, :workout_id)
+      params.require(:lift).permit(:style, :description, :rep_count, :part_id)
     end
 end

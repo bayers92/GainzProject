@@ -26,9 +26,12 @@ class WodsController < ApplicationController
   def create
     @wod = Wod.new(wod_params)
 
+    @part = Part.find(@wod.part_id)
+    @workout = Workout.find(@part.workout_id)
+
     respond_to do |format|
       if @wod.save
-        format.html { redirect_to @wod, notice: 'Wod was successfully created.' }
+        format.html { redirect_to @workout, notice: 'Wod was successfully created.' }
         format.json { render :show, status: :created, location: @wod }
       else
         format.html { render :new }
@@ -69,6 +72,6 @@ class WodsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wod_params
-      params.require(:wod).permit(:description, :result_label, :workout_id)
+      params.require(:wod).permit(:description, :result_label, :part_id, :title)
     end
 end

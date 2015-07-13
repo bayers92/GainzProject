@@ -5,10 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Type</th>
+      <th>Style</th>
       <th>Description</th>
       <th>Rep count</th>
-      <th>Workout</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +15,9 @@
   <tbody>
     <% @lifts.each do |lift| %>
       <tr>
-        <td><%= lift.type %></td>
+        <td><%= lift.style %></td>
         <td><%= lift.description %></td>
         <td><%= lift.rep_count %></td>
-        <td><%= lift.workout %></td>
         <td><%= link_to 'Show', lift %></td>
         <td><%= link_to 'Edit', edit_lift_path(lift) %></td>
         <td><%= link_to 'Destroy', lift, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710151755) do
+ActiveRecord::Schema.define(version: 20150713212827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,25 +35,35 @@ ActiveRecord::Schema.define(version: 20150710151755) do
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "lifts", force: :cascade do |t|
-    t.integer  "type"
     t.string   "description"
     t.integer  "rep_count"
-    t.integer  "workout_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "part_id"
+    t.integer  "style"
   end
 
-  add_index "lifts", ["workout_id"], name: "index_lifts_on_workout_id", using: :btree
+  add_index "lifts", ["part_id"], name: "index_lifts_on_part_id", using: :btree
+
+  create_table "parts", force: :cascade do |t|
+    t.integer  "workout_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "style"
+  end
+
+  add_index "parts", ["workout_id"], name: "index_parts_on_workout_id", using: :btree
 
   create_table "wods", force: :cascade do |t|
     t.text     "description"
     t.string   "result_label"
-    t.integer  "workout_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "title"
+    t.integer  "part_id"
   end
 
-  add_index "wods", ["workout_id"], name: "index_wods_on_workout_id", using: :btree
+  add_index "wods", ["part_id"], name: "index_wods_on_part_id", using: :btree
 
   create_table "workouts", force: :cascade do |t|
     t.string   "title"
@@ -64,7 +74,8 @@ ActiveRecord::Schema.define(version: 20150710151755) do
 
   add_index "workouts", ["admin_id"], name: "index_workouts_on_admin_id", using: :btree
 
-  add_foreign_key "lifts", "workouts"
-  add_foreign_key "wods", "workouts"
+  add_foreign_key "lifts", "parts"
+  add_foreign_key "parts", "workouts"
+  add_foreign_key "wods", "parts"
   add_foreign_key "workouts", "admins"
 end
