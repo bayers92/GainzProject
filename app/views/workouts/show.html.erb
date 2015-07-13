@@ -7,13 +7,14 @@
   <strong>Admin:</strong>
   <%= @workout.admin.email %>
 </p>
-
+<br/>
 
 <%= simple_form_for([@workout, @workout.parts.build]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :style %>
+    <p> <em> Select type of workout: </em></p>
+    <%= f.collection_radio_buttons :style, [[1, 'WOD'] ,[2, 'Olympic Lift']], :first, :last %>
     <%= f.association :workout, :as => :hidden %>
   </div>
 
@@ -21,6 +22,7 @@
     <%= f.button :submit %>
   </div>
 <% end %>
+<br/>
 
 <% @n = 1 %>
 <% @workout.parts.each do |part| %>
