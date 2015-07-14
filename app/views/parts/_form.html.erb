@@ -2,7 +2,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :workout %>
+  	<%= f.collection_radio_buttons :style, [[1, 'WOD'] ,[2, 'Olympic Lift']], :first, :last %>
+    <%= f.association :workout, :as => :hidden %>
   </div>
 
   <div class="form-actions">

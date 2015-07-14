@@ -1,34 +1,50 @@
-<h3> Add New WOD </h3>
-<%= simple_form_for([@part, @part.wods.build]) do |f| %>
-  <%= f.error_notification %>
+<% if @part.wods.first != nil %> <!-- (Existing WOD) -->
+  Wod Exists
+<% elsif @part.lifts.first != nil %> <!-- EXISTING LIFT -->
+  Lift exists
 
-  <div class="form-inputs">
-	<%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :result_label %>
-    <%= f.association :part, :as => :hidden %>
-  </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+<% else %><!--  NO EXISTING CONNECTION -->
+  <% if @part.style ==1 %>
+
+    <h3> Add New WOD </h3>
+    <%= simple_form_for([@part, @part.wods.build]) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+    	<%= f.input :title %>
+        <%= f.input :description %>
+        <%= f.input :result_label %>
+        <%= f.association :part, :as => :hidden %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
+
+
+  <% elsif @part.style == 2 %>
+
+    <h3> Add New Lift </h3>
+    <%= simple_form_for([@part, @part.lifts.build]) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :style %>
+        <%= f.input :description %>
+        <%= f.input :rep_count %>
+        <%= f.association :part, :as => :hidden %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
+
+  <% else %>
+    <p> Part NOT created - You need to select stlye of workout for each part </p>
+    <%= link_to 'Back', 'javascript:history.go(-1);' %>
+  <% end %>
 <% end %>
-<br/><br/><br/>
-
-<h3> Add New Lift </h3>
-<%= simple_form_for([@part, @part.lifts.build]) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :style %>
-    <%= f.input :description %>
-    <%= f.input :rep_count %>
-    <%= f.association :part, :as => :hidden %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
-
 

@@ -43,9 +43,11 @@ class WodsController < ApplicationController
   # PATCH/PUT /wods/1
   # PATCH/PUT /wods/1.json
   def update
+        @part = Part.find(@wod.part_id)
+    @workout = Workout.find(@part.workout_id)
     respond_to do |format|
       if @wod.update(wod_params)
-        format.html { redirect_to @wod, notice: 'Wod was successfully updated.' }
+        format.html { redirect_to @workout, notice: 'Wod was successfully updated.' }
         format.json { render :show, status: :ok, location: @wod }
       else
         format.html { render :edit }
@@ -57,9 +59,11 @@ class WodsController < ApplicationController
   # DELETE /wods/1
   # DELETE /wods/1.json
   def destroy
+        @part = Part.find(@wod.part_id)
+    @workout = Workout.find(@part.workout_id)
     @wod.destroy
     respond_to do |format|
-      format.html { redirect_to wods_url, notice: 'Wod was successfully destroyed.' }
+      format.html { redirect_to @workout, notice: 'Wod was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

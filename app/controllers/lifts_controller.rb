@@ -42,9 +42,11 @@ class LiftsController < ApplicationController
   # PATCH/PUT /lifts/1
   # PATCH/PUT /lifts/1.json
   def update
+        @part = Part.find(@lift.part_id)
+    @workout = Workout.find(@part.workout_id)
     respond_to do |format|
       if @lift.update(lift_params)
-        format.html { redirect_to @lift, notice: 'Lift was successfully updated.' }
+        format.html { redirect_to @workout, notice: 'Lift was successfully updated.' }
         format.json { render :show, status: :ok, location: @lift }
       else
         format.html { render :edit }
@@ -56,9 +58,11 @@ class LiftsController < ApplicationController
   # DELETE /lifts/1
   # DELETE /lifts/1.json
   def destroy
+        @part = Part.find(@lift.part_id)
+    @workout = Workout.find(@part.workout_id)
     @lift.destroy
     respond_to do |format|
-      format.html { redirect_to lifts_url, notice: 'Lift was successfully destroyed.' }
+      format.html { redirect_to @workout, notice: 'Lift was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

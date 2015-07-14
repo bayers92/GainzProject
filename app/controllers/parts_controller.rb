@@ -54,9 +54,10 @@ class PartsController < ApplicationController
   # DELETE /parts/1
   # DELETE /parts/1.json
   def destroy
+    @workout = Workout.find(@part.workout_id)
     @part.destroy
     respond_to do |format|
-      format.html { redirect_to parts_url, notice: 'Part was successfully destroyed.' }
+      format.html { redirect_to @workout, notice: 'Part was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

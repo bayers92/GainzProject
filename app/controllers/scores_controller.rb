@@ -36,7 +36,7 @@ class ScoresController < ApplicationController
 
     respond_to do |format|
       if @score.save
-        format.html { redirect_to @score, notice: 'Score was successfully created.' }
+        format.html { redirect_to @workout, notice: 'Score was successfully created.' }
         format.json { render :show, status: :created, location: @score }
       else
         format.html { render :new }
@@ -48,9 +48,18 @@ class ScoresController < ApplicationController
   # PATCH/PUT /scores/1
   # PATCH/PUT /scores/1.json
   def update
+
+    if @score.wod_id 
+      @x = Wod.find(@score.wod_id)
+    else
+      @x = Lift.find(@score.lift_id)
+    end
+    @part = Part.find(@x.part_id)
+    @workout = Workout.find(@part.workout_id)
+
     respond_to do |format|
       if @score.update(score_params)
-        format.html { redirect_to @score, notice: 'Score was successfully updated.' }
+        format.html { redirect_to @workout, notice: 'Score was successfully updated.' }
         format.json { render :show, status: :ok, location: @score }
       else
         format.html { render :edit }
@@ -62,9 +71,18 @@ class ScoresController < ApplicationController
   # DELETE /scores/1
   # DELETE /scores/1.json
   def destroy
+
+    if @score.wod_id 
+      @x = Wod.find(@score.wod_id)
+    else
+      @x = Lift.find(@score.lift_id)
+    end
+    @part = Part.find(@x.part_id)
+    @workout = Workout.find(@part.workout_id)
+
     @score.destroy
     respond_to do |format|
-      format.html { redirect_to scores_url, notice: 'Score was successfully destroyed.' }
+      format.html { redirect_to @workout, notice: 'Score was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
