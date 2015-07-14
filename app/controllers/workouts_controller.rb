@@ -1,5 +1,5 @@
 class WorkoutsController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, only: [:edit, :update, :destroy, :create]
   before_action :set_workout, only: [:show, :edit, :update, :destroy]
 
   # GET /workouts

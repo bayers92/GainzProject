@@ -9,20 +9,23 @@
 </p>
 <br/>
 
-<%= simple_form_for([@workout, @workout.parts.build]) do |f| %>
-  <%= f.error_notification %>
+<% if admin_signed_in? %>
+  <%= simple_form_for([@workout, @workout.parts.build]) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <p> <em> Select type of workout: </em></p>
-    <%= f.collection_radio_buttons :style, [[1, 'WOD'] ,[2, 'Olympic Lift']], :first, :last %>
-    <%= f.association :workout, :as => :hidden %>
-  </div>
+    <div class="form-inputs">
+      <p> <em> Select type of workout: </em></p>
+      <%= f.collection_radio_buttons :style, [[1, 'WOD'] ,[2, 'Olympic Lift']], :first, :last %>
+      <%= f.association :workout, :as => :hidden %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+  <br/>
 <% end %>
-<br/>
+
 
 <% @n = 1 %>
 <% @workout.parts.each do |part| %>
@@ -33,14 +36,57 @@
         <%= wod.title %><br/>
         <%= wod.description %><br/>
         <%= wod.result_label %><br/>
+
+        <br/>
+        <% if user_signed_in? %>
+
+          <%= simple_form_for([wod, wod.scores.build]) do |f| %>
+            <%= f.error_notification %>
+
+            <div class="form-inputs">
+              <%= f.input :result %>
+              <%= f.association :user, :as => :hidden %>
+              <%= f.association :lift, :as => :hidden %>
+              <%= f.association :wod, :as => :hidden %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit %>
+            </div>
+          <% end %><!-- End Score Form -->
+
+        <% end %>
       <% end %>
     <% elsif part.style == 2 %>  <!-- LIFT STYLE PART -->
+      
       <% part.lifts.each do |lift| %>
         <%= lift.style %><br/>
         <%= lift.description %><br/>
         <%= lift.rep_count %><br/>
+
+        <br/>
+        <% if user_signed_in? %>
+
+          <%= simple_form_for([lift, lift.scores.build]) do |f| %>
+            <%= f.error_notification %>
+
+            <div class="form-inputs">
+              <%= f.input :result %>
+              <%= f.association :user, :as => :hidden %>
+              <%= f.association :lift, :as => :hidden %>
+              <%= f.association :wod, :as => :hidden %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit %>
+            </div>
+          <% end %> <!-- End Score Form -->
+
+        <% end %>
       <% end %>
     <% end %>
+
+    
     <% @n += 1 %>
   <% end %>
 <% end %>

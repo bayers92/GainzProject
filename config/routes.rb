@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :scores
+  devise_for :users
   resources :parts
   resources :workouts do
     resources :parts 
@@ -10,6 +12,13 @@ Rails.application.routes.draw do
   devise_for :admins
   resources :lifts
   resources :wods
+  resources :wods do
+    resources :scores 
+  end
+  resources :lifts do
+    resources :scores
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
