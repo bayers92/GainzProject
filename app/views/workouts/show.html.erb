@@ -22,53 +22,74 @@
 
 <% @n = 1 %>
 <% @workout.parts.each do |part| %>
+
   <% if part.style != nil %>
     <h3> Part <%= @n %>: </h3>
-    <% if part.style == 1 %>  <!-- WOD STYLE PART -->
+
+    <!-- WOD STYLE WORKOUT -->
+    <% if part.style == 1 %>  
       <% part.wods.each do |wod| %>
         <%= wod.title %><br/>
         <%= wod.description %><br/>
         <%= wod.result_label %><br/>
+        <% @my_wod_id = wod.id %>
 
         <br/>
 
+
+        <!-- IF USER SIGNED IN -->
         <% if user_signed_in? %>
+          <% if current_user.scores.where(:wod_id => @my_wod_id).blank? %>
 
-          <%= simple_form_for([wod, wod.scores.build]) do |f| %>
-            <%= f.error_notification %>
+            <!-- START SCORE FORM -->
+            <%= simple_form_for([wod, wod.scores.build]) do |f| %>
+              <%= f.error_notification %>
 
-            <div class="form-inputs">
-              <%= f.input :result %>
-              <%= f.association :user, :as => :hidden %>
-              <%= f.association :lift, :as => :hidden %>
-              <%= f.association :wod, :as => :hidden %>
-            </div>
+              <div class="form-inputs">
+                <%= f.input :result %>
+                <%= f.association :user, :as => :hidden, input_html: { value: current_user.id }%>
+                <%= f.association :lift, :as => :hidden %>
+                <%= f.association :wod, :as => :hidden %>
+              </div>
 
-            <div class="form-actions">
-              <%= f.button :submit %>
-            </div>
-          <% end %><!-- End Score Form -->
+              <div class="form-actions">
+                <%= f.button :submit %>
+              </div>
+            <% end %>
+            <!-- End Score Form -->
 
+            <% else %> <!-- DISPLAY EXISTING SCORE -->
+              <% @my_wod_score = current_user.scores.where(:wod_id => @my_wod_id).first %>
+                <p class ="result"> Result: <%= @my_wod_score.result %> </p>
+                <p class = "edit-result">
+                  <%= link_to 'Edit Score', edit_score_path(@my_wod_score) %> | <%= link_to 'Delete Score', @my_wod_score, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </p>
+            <% end %>
         <% end %>
 
 
       <% end %>
+
     <% elsif part.style == 2 %>  <!-- LIFT STYLE PART -->
       
       <% part.lifts.each do |lift| %>
         <%= lift.style %><br/>
         <%= lift.description %><br/>
         <%= lift.rep_count %><br/>
-
+        <% @my_lift_id = lift.id %>
         <br/>
+
+        <!-- IF USER SIGNED IN -->
         <% if user_signed_in? %>
+
+        <% if current_user.scores.where(:lift_id => @my_lift_id).blank? %>
 
           <%= simple_form_for([lift, lift.scores.build]) do |f| %>
             <%= f.error_notification %>
 
             <div class="form-inputs">
               <%= f.input :result %>
-              <%= f.association :user, :as => :hidden %>
+              <%= f.association :user, :as => :hidden, input_html: { value: current_user.id }%>
               <%= f.association :lift, :as => :hidden %>
               <%= f.association :wod, :as => :hidden %>
             </div>
@@ -77,6 +98,14 @@
               <%= f.button :submit %>
             </div>
           <% end %> <!-- End Score Form -->
+
+          <% else %> <!-- DISPLAY EXISTING SCORE -->
+              <% @my_lift_score = current_user.scores.where(:lift_id => @my_lift_id).first %>
+                <p class ="result"> Result: <%= @my_lift_score.result %> </p>
+                <p class = "edit-result">
+                  <%= link_to 'Edit Score', edit_score_path(@my_lift_score) %> | <%= link_to 'Delete Score', @my_lift_score, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </p>
+            <% end %>
 
         <% end %>
       <% end %>
@@ -89,5 +118,10 @@
 
 
 <br/>
-<%= link_to 'Edit', edit_workout_path(@workout) %> |
+<% if admin_signed_in? %>
+<%= link_to 'Edit Workout', edit_workout_path(@workout) %> |
+<% end %>
 <%= link_to 'Back', workouts_path %>
+
+<br/>
+<br/>

@@ -1680,6 +1680,20 @@ textarea {
 
 }
 
+.result {
+	color: rgba(255, 0, 0, 1);
+	margin-bottom: 0px;
+	font-weight: bold;
+}
+
+.edit-result {
+	color: rgba(255, 0, 0, .5);
+	margin-top: 5px;
+	margin-bottom: 30px;
+	a {
+		color: rgba(255, 0, 0, .5);
+	}
+}
 
 
 @import 'foundation';

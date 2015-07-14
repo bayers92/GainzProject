@@ -1,0 +1,17 @@
+digraph models_diagram {
+	graph[overlap=false, splines=true]
+	"Admin" [shape=Mrecord, label="{Admin|id :integer\lemail :string\lencrypted_password :string\lreset_password_token :string\lreset_password_sent_at :datetime\lremember_created_at :datetime\lsign_in_count :integer\lcurrent_sign_in_at :datetime\llast_sign_in_at :datetime\lcurrent_sign_in_ip :inet\llast_sign_in_ip :inet\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Lift" [shape=Mrecord, label="{Lift|id :integer\ldescription :string\lrep_count :integer\lcreated_at :datetime\lupdated_at :datetime\lpart_id :integer\lstyle :integer\l}"]
+	"Part" [shape=Mrecord, label="{Part|id :integer\lworkout_id :integer\lcreated_at :datetime\lupdated_at :datetime\lstyle :integer\l}"]
+	"Score" [shape=Mrecord, label="{Score|id :integer\lresult :string\luser_id :integer\llift_id :integer\lwod_id :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"User" [shape=Mrecord, label="{User|id :integer\lemail :string\lencrypted_password :string\lreset_password_token :string\lreset_password_sent_at :datetime\lremember_created_at :datetime\lsign_in_count :integer\lcurrent_sign_in_at :datetime\llast_sign_in_at :datetime\lcurrent_sign_in_ip :inet\llast_sign_in_ip :inet\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Wod" [shape=Mrecord, label="{Wod|id :integer\ldescription :text\lresult_label :string\lcreated_at :datetime\lupdated_at :datetime\ltitle :string\lpart_id :integer\l}"]
+	"Workout" [shape=Mrecord, label="{Workout|id :integer\ltitle :string\ladmin_id :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Admin" -> "Workout" [arrowtail=odot, arrowhead=crow, dir=both color="#A2D446"]
+	"Lift" -> "Score" [arrowtail=odot, arrowhead=crow, dir=both color="#AD843C"]
+	"Part" -> "Lift" [arrowtail=odot, arrowhead=crow, dir=both color="#04E9F6"]
+	"Part" -> "Wod" [arrowtail=odot, arrowhead=crow, dir=both color="#39A7AC"]
+	"Wod" -> "Score" [arrowtail=odot, arrowhead=crow, dir=both color="#E419D4"]
+	"Workout" -> "Part" [arrowtail=odot, arrowhead=crow, dir=both color="#FEE119"]
+	"Workout" -> "Score" [arrowtail=odot, arrowhead=crow, dir=both color="#DE429B"]
+}
