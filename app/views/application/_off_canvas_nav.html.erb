@@ -2,8 +2,9 @@
 <% if user_signed_in? %>
 	<ul class="off-canvas-list">
 		<li><label>#GainzProject</label></li>
-		<li> <a href ="/lifts?by_style=5"> Power Clean </a></li>
-		<li> <a href ="/lifts?by_style=6"> Hang Clean </a></li>
+		<% Category.all.each do |category| %>
+			<li> <a href ="/lifts?by_style=<%=category.style%>"> <%= category.name %> </a></li>
+		<% end %>
 		<li>
 			<%= link_to('Logout', destroy_user_session_path, :method => :delete, data: { no_turbolink: true } ) %>
 		</li>
