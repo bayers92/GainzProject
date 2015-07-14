@@ -117,8 +117,8 @@ $black       : #000000;
 
 // We use these as default colors throughout
 // $primary-color: #65E0CB;
-$primary-color: #FA584F;
-$secondary-color: #65CAE0;
+$primary-color: #4A90E2;
+$secondary-color: #50E3C2;
 $wet-asphalt: #34495E;
 $dark-gray: #696969;
 $medium-gray: #C2C0C0;
@@ -147,7 +147,7 @@ $pontano: 'Pontano Sans', sans-serif;
 // $garamond: 'EB Garamond', serif;
 
 $body-bg: $white;
-$body-font-color: rgba(0, 0, 0, 0.8);
+$body-font-color: $medium-gray;
 $body-font-family: $merriweather;
 $body-font-weight: normal;
 $body-font-style: normal;
@@ -1465,11 +1465,6 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 // $include-legacy-visibility-classes: true;
 // $include-accessibility-classes: true;
 
-a:hover {
-	// background-color: rgba(0,0,0,0) !important;
-	// color: $primary-color;
-}
-
 .center-text {
 	text-align: center;
 }
@@ -1572,16 +1567,10 @@ a:hover {
 // 
 // OFFCANVAS NAV BAR FIX START
 @media #{$small-only} {
-	.row {
-		padding-bottom: 0px !important;
-		padding-top: 0px !important;
-	}
-	.content {
-		margin-top: 0px !important;
-	}
 	body,html{
-		height:100%;
-		width:100%;
+		height:100vh;
+		width:100vw;
+		overflow-x: hidden;
 	}
 	.off-canvas-wrap,.inner-wrap{
 		height:100%;   
@@ -1592,21 +1581,23 @@ a:hover {
 		height: 100%; overflow:scroll;
 		-webkit-overflow-scrolling: touch;
 	}
+	.row {
+		width: 95vw !important;
+		margin-right: auto !important;
+		margin-left: auto !important;
+	}
 }
 // OFFCANVAS NAV BAR FIX END
 
 
 .heading {
-	height: 100px;
-	.logo {
-		padding-left: 20px;
-		height: 10%;
-		min-height: 40px;
-		img {
-			min-height: 100%;
-			width: auto;
-			padding-top: 30px;
-		}
+	height: 130px;
+	img {
+		padding-top: 30px;
+		height: 80px;
+		width: auto;
+		margin-left: auto;
+		margin-right: auto;
 	}
 	.devise_links {
 		padding-top: 30px;
@@ -1667,5 +1658,28 @@ textarea {
   background: #a0d3e8;
   color: white;
 }
+
+#fixed-nav {
+	width: 25% !important;
+	right: 0 !important;
+	left: auto;
+}
+
+.workout {
+	.roman-numerals {
+		margin-top: 0px;
+	}
+	.date {
+		margin-bottom: 0px;
+	}
+	.title {
+	}
+	.edit-links {
+
+	}
+
+}
+
+
 
 @import 'foundation';

@@ -26,9 +26,17 @@ class ScoresController < ApplicationController
   def create
     @score = Score.new(score_params)
 
+    if @score.wod_id 
+      @x = Wod.find(@score.wod_id)
+    else
+      @x = Lift.find(@score.lift_id)
+    end
+    @part = Part.find(@x.part_id)
+    @workout = Workout.find(@part.workout_id)
+
     respond_to do |format|
       if @score.save
-        format.html { redirect_to @score, notice: 'Score was successfully created.' }
+        format.html { redirect_to @workout, notice: 'Score was successfully created.' }
         format.json { render :show, status: :created, location: @score }
       else
         format.html { render :new }
