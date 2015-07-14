@@ -1,0 +1,1 @@
+Time::DATE_FORMATS[:my_long_ordinal] = lambda { |time| time.strftime("%B #{ActiveSupport::Inflector.ordinalize(time.day)}, %Y") }

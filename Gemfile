@@ -54,4 +54,5 @@ gem 'cancan'
 gem 'rails_12factor', group: :production
 gem 'aws-sdk', '< 2.0'
 
+gem 'roman-numerals', '~> 0.3.0'
 

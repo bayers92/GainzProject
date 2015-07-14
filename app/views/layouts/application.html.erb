@@ -13,33 +13,40 @@
 </head>
 
 <body>
-	<div class = "row">
-		<p id="notice"><%= notice %></p>
-		<p id="alert"><%= alert %></p>
-		<div class = "small-6 medium-3 columns devise_links text-right fixed">
-			<% if user_signed_in? %>
-			<li>
-				<%= link_to('User Logout', destroy_user_session_path, :method => :delete) %>        
-			</li>
-			<% else %>
-			<li>
-				<%= link_to('User Login', new_user_session_path)  %>  
-			</li>
-			<% end %>
+	<div class="off-canvas-wrap fixed" data-offcanvas>
+		<div class="inner-wrap">
+			<p class = "notice" id="notice"><%= notice %></p>
+			<p class = "id" id="alert"><%= alert %></p>
 
-			<% if admin_signed_in? %>
-			<li>
-				<%= link_to('Admin Logout', destroy_admin_session_path, :method => :delete) %>        
-			</li>
-			<% else %>
-			<li>
-				<%= link_to('Admin Login', new_admin_session_path)  %>  
-			</li>
-			<% end %>
+			<section class="main-section">
+				<div class = "heading">
+					<div class = "small-6 medium-9 columns">
+						<div class = "logo">
+							<a href="/">
+								<%= image_tag "brandclub_logo.png" %>
+							</a>
+						</div>
+					</div>
+					<div class = "small-6 medium-3 columns devise_links text-right fixed">
+						<% if user_signed_in? %>
+							<%= link_to('User Logout', destroy_user_session_path, :method => :delete) %>        
+						<% else %>
+							<%= link_to('User Login', new_user_session_path)  %>  
+						<% end %>
+						| 
+						<% if admin_signed_in? %>
+							<%= link_to('Admin Logout', destroy_admin_session_path, :method => :delete) %>        
+						<% else %>
+							<%= link_to('Admin Login', new_admin_session_path)  %>  
+						<% end %>
+					</div>
+				</div>
+
+				<div class = "row">
+					<%= yield %>
+				</div>
+			</section>
 		</div>
-
-
-		<%= yield %>
 	</div>
 
 </body>
