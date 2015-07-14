@@ -56,6 +56,12 @@ gem 'cancan'
 gem 'rails_12factor', group: :production
 gem 'aws-sdk', '< 2.0'
 
+gem 'lupa'
+gem 'haml-rails'
+
+gem 'has_scope'
+
+
 gem 'roman-numerals', '~> 0.3.0'
 
 

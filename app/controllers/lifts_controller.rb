@@ -1,10 +1,12 @@
 class LiftsController < ApplicationController
   before_action :set_lift, only: [:show, :edit, :update, :destroy]
 
+  has_scope :by_style
+
   # GET /lifts
   # GET /lifts.json
   def index
-    @lifts = Lift.all
+    @lifts = apply_scopes(Lift).all
   end
 
   # GET /lifts/1

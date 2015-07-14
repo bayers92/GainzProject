@@ -5,6 +5,8 @@ class ScoresController < ApplicationController
   # GET /scores.json
   def index
     @scores = Score.all
+    # @categories = Category.all
+    # @scores = ScoreSearch.new(current_user.scores).search(search_params)
   end
 
   # GET /scores/1
@@ -95,6 +97,10 @@ class ScoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def score_params
-      params.require(:score).permit(:result, :user_id, :lift_id, :wod_id)
+      params.require(:score).permit(:result, :user_id, :lift_id, :wod_id,)
+    end
+
+    def search_params
+      params.permit(:lift_id)
     end
 end

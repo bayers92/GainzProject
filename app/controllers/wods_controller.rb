@@ -1,5 +1,6 @@
 class WodsController < ApplicationController
   before_action :set_wod, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /wods
   # GET /wods.json
