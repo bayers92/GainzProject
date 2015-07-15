@@ -6,7 +6,7 @@ class WorkoutsController < ApplicationController
   # GET /workouts
   # GET /workouts.json
   def index
-    @workouts = Workout.all
+    @workouts = Workout.all.order('workout_date DESC')
   end
 
   # GET /workouts/1
