@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714185724) do
+ActiveRecord::Schema.define(version: 20150715004819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,8 +48,10 @@ ActiveRecord::Schema.define(version: 20150714185724) do
     t.datetime "updated_at",  null: false
     t.integer  "part_id"
     t.integer  "style"
+    t.integer  "category_id"
   end
 
+  add_index "lifts", ["category_id"], name: "index_lifts_on_category_id", using: :btree
   add_index "lifts", ["part_id"], name: "index_lifts_on_part_id", using: :btree
 
   create_table "parts", force: :cascade do |t|
@@ -112,6 +114,7 @@ ActiveRecord::Schema.define(version: 20150714185724) do
 
   add_index "workouts", ["admin_id"], name: "index_workouts_on_admin_id", using: :btree
 
+  add_foreign_key "lifts", "categories"
   add_foreign_key "lifts", "parts"
   add_foreign_key "parts", "workouts"
   add_foreign_key "scores", "lifts"

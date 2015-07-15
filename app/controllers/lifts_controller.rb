@@ -29,6 +29,8 @@ class LiftsController < ApplicationController
     @lift = Lift.new(lift_params)
     @part = Part.find(@lift.part_id)
     @workout = Workout.find(@part.workout_id)
+    @lift.style = @lift.category.style
+    @lift.save
 
     respond_to do |format|
       if @lift.save
@@ -44,10 +46,13 @@ class LiftsController < ApplicationController
   # PATCH/PUT /lifts/1
   # PATCH/PUT /lifts/1.json
   def update
-        @part = Part.find(@lift.part_id)
+    @part = Part.find(@lift.part_id)
     @workout = Workout.find(@part.workout_id)
+
     respond_to do |format|
       if @lift.update(lift_params)
+          @lift.style = @lift.category.style
+        @lift.save
         format.html { redirect_to @workout, notice: 'Lift was successfully updated.' }
         format.json { render :show, status: :ok, location: @lift }
       else
@@ -77,6 +82,6 @@ class LiftsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lift_params
-      params.require(:lift).permit(:style, :description, :rep_count, :part_id)
+      params.require(:lift).permit(:style, :description, :rep_count, :part_id, :category_id)
     end
 end

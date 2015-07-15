@@ -81,7 +81,7 @@
       
       <% part.lifts.each do |lift| %>
         <div class = "show-part-details">
-          <p class = "title"><%= lift.style %></p>
+          <p class = "title"><%= lift.category.name %></p>
           <p class = "description"><%= lift.description %></p>
           <!-- <p class = "rep-count"><%= lift.rep_count %></p> -->
           <% @my_lift_id = lift.id %>
