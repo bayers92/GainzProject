@@ -1,5 +1,5 @@
 <h1><%= @workout.title %></h1>
-<p class = "date">Workout <%= RomanNumerals.to_roman(@workout.id)%> | <%= @workout.created_at.to_formatted_s(:my_long_ordinal) %> </p>
+<p class = "date">Workout <%= RomanNumerals.to_roman(@workout.id)%> | <%= @workout.workout_date.to_formatted_s(:my_long_ordinal) %> </p>
 
 
 <% if admin_signed_in? %>
@@ -81,7 +81,7 @@
       
       <% part.lifts.each do |lift| %>
         <div class = "show-part-details">
-          <p class = "title"><%= lift.category.name %></p>
+          <p class = "title"><%= lift.category.name %> ( <%= pluralize(lift.rep_count , 'rep') %> )</p>
           <p class = "description"><%= lift.description %></p>
           <!-- <p class = "rep-count"><%= lift.rep_count %></p> -->
           <% @my_lift_id = lift.id %>
