@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150715145744) do
+ActiveRecord::Schema.define(version: 20150715211331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20150715145744) do
     t.integer  "part_id"
     t.integer  "style"
     t.integer  "category_id"
+    t.string   "timing"
+    t.boolean  "max"
   end
 
   add_index "lifts", ["category_id"], name: "index_lifts_on_category_id", using: :btree
