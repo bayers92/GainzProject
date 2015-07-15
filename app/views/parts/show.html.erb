@@ -33,7 +33,7 @@
       <div class="form-inputs">
         <%= f.association :category %>
         <%= f.input :description %>
-        <%= f.input :rep_count %>
+        <%= f.input :rep_count, collection: 1..5 %>
         <%= f.association :part, :as => :hidden %>
       </div>
 

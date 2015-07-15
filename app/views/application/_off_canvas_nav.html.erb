@@ -13,6 +13,10 @@
 <!-- ADMIN VIEW -->
 <% elsif admin_signed_in? %>
 	<ul class="off-canvas-list">
+		<li><label>#GainzProject</label></li>
+		<li>
+			<%= link_to 'New Workout', new_workout_path %>
+		</li>
 		<li>
 			<%= link_to('Logout', destroy_admin_session_path, :method => :delete, data: { no_turbolink: true } ) %>
 		</li>
