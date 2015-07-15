@@ -82,6 +82,7 @@
       <% part.lifts.each do |lift| %>
         <div class = "show-part-details">
           <p class = "title"><%= lift.category.name %> ( <%= pluralize(lift.rep_count , 'rep') %> )</p>
+          <p class = "description"><%= lift.timing %></p>
           <p class = "description"><%= lift.description %></p>
           <!-- <p class = "rep-count"><%= lift.rep_count %></p> -->
           <% @my_lift_id = lift.id %>
