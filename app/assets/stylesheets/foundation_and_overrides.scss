@@ -869,7 +869,7 @@ $tabbar-header-margin: 0;
 // $off-canvas-back-hover-border-bottom: none;
 
 // Off Canvas Menu Icon Variables
-$tabbar-menu-icon-color: $primary-color;
+$tabbar-menu-icon-color: $secondary-color;
 $tabbar-menu-icon-hover: scale-color($tabbar-menu-icon-color, $lightness: -30%);
 
 $tabbar-menu-icon-text-indent: rem-calc(35);
@@ -1791,7 +1791,7 @@ $darker2: darken(adjust-hue($base, -10), 30%);
 	background-color: $darker1;
 }
 .color4 {
-	background-color: $lighter1;
+	background-color: $lighter2;
 }
 .color5 {
 	background-color: $darker2;
