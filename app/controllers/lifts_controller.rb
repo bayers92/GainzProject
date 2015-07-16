@@ -6,7 +6,7 @@ class LiftsController < ApplicationController
   # GET /lifts
   # GET /lifts.json
   def index
-    @lifts = apply_scopes(Lift).all
+    @lifts = apply_scopes(Lift).all.order('created_at DESC')
   end
 
   # GET /lifts/1
