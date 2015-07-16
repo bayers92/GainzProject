@@ -1599,6 +1599,9 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 	.no-padding-special {
 		margin-left: -2.5% !important;
 	}
+	.workout-index {
+		height: 125px;
+	}
 }
 // OFFCANVAS NAV BAR FIX END
 
@@ -1707,6 +1710,7 @@ textarea {
 .workout-index {
 	padding: 2rem;
 	padding: 5% !important;
+	height: 300px;
 	.roman-numerals {
 		margin-top: 0px;
 	}
