@@ -401,7 +401,7 @@ $blockquote-border: 5px solid $primary-color;
 
 // We use this to control the maximum number of block grid elements per row
 // $block-grid-elements: 12;
-$block-grid-default-spacing: rem-calc(60);
+$block-grid-default-spacing: rem-calc(0);
 // $align-block-grid-to-grid: false;
 
 // Enables media queries for block-grid classes. Set to false if writing semantic HTML.
@@ -1596,6 +1596,9 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 		margin-right: auto !important;
 		margin-left: auto !important;
 	}
+	.no-padding-special {
+		margin-left: -2.5% !important;
+	}
 }
 // OFFCANVAS NAV BAR FIX END
 
@@ -1617,8 +1620,20 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 	}
 }
 
-.no-padding {
+.no-padding-special {
+	width: 100vw !important;
 	padding: 0px !important;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+.row {
+	max-width: none !important;
+}
+
+.no-padding { 
+	padding-left: 0px !important;
+	padding-right: 0px !important;
 }
 
 
@@ -1674,6 +1689,7 @@ textarea {
 }
 
 .workout {
+	padding: 2rem;
 	.roman-numerals {
 		margin-top: 0px;
 	}
@@ -1684,6 +1700,29 @@ textarea {
 	}
 	.edit-links {
 
+	}
+
+}
+
+.workout-index {
+	padding: 2rem;
+	padding: 5% !important;
+	.roman-numerals {
+		margin-top: 0px;
+	}
+	.date {
+		margin-bottom: 0px;
+		color: white;
+	}
+	.title {
+		a {
+			color: white;
+		}
+	}
+	.edit-links {
+		a {
+			color: white;
+		}
 	}
 
 }
@@ -1717,4 +1756,45 @@ textarea {
 		text-decoration: underline;
 	}
 }
+
+.row.row {
+	margin: 0 !important;
+}
+
+// BACKGROUND COLOR MAGIC
+
+$base: $primary-color;
+$complement1: adjust-hue($base, 180);
+$complement2: darken(adjust-hue($base, 180), 5%);
+$lighten1: lighten($base, 15%);
+$lighten2: lighten($base, 30%);
+
+$lighter1: lighten(adjust-hue($base, 5), 15%);
+$lighter2: lighten(adjust-hue($base, 10), 30%);
+$darker1: darken(adjust-hue($base, -5), 15%);
+$darker2: darken(adjust-hue($base, -10), 30%);
+
+
+
+
+.color1 {
+	background-color: $base;
+}
+.color2 {
+	background-color: $lighter1;
+}
+.color3 {
+	background-color: $darker1;
+}
+.color4 {
+	background-color: $lighter1;
+}
+.color5 {
+	background-color: $darker2;
+}
+
+
+
+
+
 @import 'foundation';
