@@ -2,6 +2,7 @@
 
 <% if @lifts.first != nil %>
   <h1><%= @lifts.first.category.name %></h1>
+  <p> *Denotes max effort lift </p>
 <% else %>
   <h4> You do not have any recorded scores for this lift </h4>
 <% end %>
@@ -27,7 +28,7 @@
           <tr>
             <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_long_ordinal) %> </td> 
             <td><%= lift.rep_count %></td>
-            <td><%= score.result %> </td>
+            <td><%= score.result %><% if lift.max? %>*<%end%> </td>
             <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
           </tr>
           <% end %>
@@ -51,7 +52,7 @@
           <% if score.user_id == current_user.id %>
           <tr>
             <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_long_ordinal) %> </td> 
-            <td><%= score.result %> </td>
+            <td><%= score.result %><% if lift.max? %>*<%end%> </td>
             <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
           </tr>
           <% end %>
@@ -77,7 +78,7 @@
           <% if score.user_id == current_user.id %>
           <tr>
             <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_long_ordinal) %> </td> 
-            <td><%= score.result %> </td>
+            <td><%= score.result %><% if lift.max? %>*<%end%> </td>
             <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
           </tr>
           <% end %>
@@ -102,7 +103,7 @@
           <% if score.user_id == current_user.id %>
           <tr>
             <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_long_ordinal) %> </td> 
-            <td><%= score.result %> </td>
+            <td><%= score.result %><% if lift.max? %>*<%end%> </td>
             <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
           </tr>
           <% end %>
@@ -127,7 +128,7 @@
           <% if score.user_id == current_user.id %>
           <tr>
             <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_long_ordinal) %> </td> 
-            <td><%= score.result %> </td>
+            <td><%= score.result %><% if lift.max? %>*<%end%> </td>
             <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
           </tr>
           <% end %>
@@ -152,7 +153,7 @@
           <% if score.user_id == current_user.id %>
           <tr>
             <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_long_ordinal) %> </td> 
-            <td><%= score.result %> </td>
+            <td><%= score.result %><% if lift.max? %>*<%end%> </td>
             <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
           </tr>
           <% end %>
