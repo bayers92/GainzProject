@@ -1586,7 +1586,10 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 }
 
 .no-padding-special {
-	// width: 100vw !important;
+	width: 100vw !important;    
+	position: absolute;
+    left:0;
+    right:0;
 	padding: 0px !important;
 	padding-left: 0px !important;
 	padding-right: 0px !important;
