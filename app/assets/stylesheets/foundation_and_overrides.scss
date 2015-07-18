@@ -1567,44 +1567,6 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 	min-height: 100vh;
 }
 
-
-// 
-// OFFCANVAS NAV BAR FIX START
-@media #{$small-only} {
-	.row {
-		padding-bottom: 15px !important;
-		padding-top: 15px !important;
-	}
-	.content {
-		margin-top: 0px !important;
-	}
-	body,html{
-	    height:100%;
-	    width:100%;
-	}
-	.off-canvas-wrap,.inner-wrap{
-	    height:100%;   
-	}
-
-	.off-canvas-wrap .main-section
-	{
-	  height: 100%; overflow:scroll;
-	  -webkit-overflow-scrolling: touch;
-	}
-	.row {
-		width: 95vw !important;
-		margin-right: auto !important;
-		margin-left: auto !important;
-	}
-	.no-padding-special {
-		margin-left: -2.5% !important;
-	}
-	.workout-index {
-		height: 125px;
-	}
-}
-// OFFCANVAS NAV BAR FIX END
-
 .heading {
 	height: 130px;
 	img {
@@ -1624,14 +1586,10 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 }
 
 .no-padding-special {
-	width: 100vw !important;
+	// width: 100vw !important;
 	padding: 0px !important;
 	padding-left: 0px !important;
 	padding-right: 0px !important;
-}
-
-.row {
-	max-width: none !important;
 }
 
 .no-padding { 
@@ -1761,10 +1719,6 @@ textarea {
 	}
 }
 
-.row.row {
-	margin: 0 !important;
-}
-
 // BACKGROUND COLOR MAGIC
 
 $base: $primary-color;
@@ -1799,6 +1753,54 @@ $darker2: darken(adjust-hue($base, -10), 30%);
 
 
 
+// 
+// MOBILE
+@media #{$small-only} {
+	.row {
+		padding-bottom: 15px !important;
+		padding-top: 15px !important;
+	}
+	.content {
+		margin-top: 0px !important;
+	}
+	body,html{
+	    height:100%;
+	    width:100%;
+	}
+	.off-canvas-wrap,.inner-wrap{
+	    height:100%;   
+	}
 
+	.off-canvas-wrap .main-section
+	{
+	  height: 100%; overflow:scroll;
+	  -webkit-overflow-scrolling: touch;
+	}
+	.row {
+		width: 95vw !important;
+		margin-right: auto !important;
+		margin-left: auto !important;
+	}
+	.no-padding-special {
+		width: 100vw !important;
+		margin-right: 0 !important;
+		margin-left: 0 !important;
+		margin-left: -2.5% !important;
+	}
+	.workout-index {
+		height: 125px !important;
+	}
+}
+// OFFCANVAS NAV BAR FIX END
+
+.no-padding-special {
+	// max-width: none !important;
+	// width: 100vw !important;
+	margin: 0 !important;
+}
+
+.row.row {
+
+}
 
 @import 'foundation';
