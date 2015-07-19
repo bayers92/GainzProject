@@ -1730,7 +1730,7 @@ $lighten1: lighten($base, 15%);
 $lighten2: lighten($base, 30%);
 
 $lighter1: lighten(adjust-hue($base, 5), 15%);
-$lighter2: lighten(adjust-hue($base, 10), 30%);
+$lighter2: lighten(adjust-hue($base, 10), 20%);
 $darker1: darken(adjust-hue($base, -5), 15%);
 $darker2: darken(adjust-hue($base, -10), 30%);
 
