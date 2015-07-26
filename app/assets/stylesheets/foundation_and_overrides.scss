@@ -1679,6 +1679,7 @@ textarea {
 		color: white;
 	}
 	.title {
+		height: 120px;
 		a {
 			color: white;
 		}
@@ -1758,25 +1759,8 @@ $darker2: darken(adjust-hue($base, -10), 30%);
 	background-color: rgba(0,0,0,0) !important;
 	border: white solid 2px !important;
     position: absolute !important;
-    bottom: 0px !important;
+    margin-top: 10px !important;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1820,6 +1804,11 @@ $darker2: darken(adjust-hue($base, -10), 30%);
 	}
 	.leaderboard-button {
 		position: relative !important;
+	}
+	.workout-index {
+		.title {
+			height: auto !important;
+		}
 	}
 }
 // MOBILE END
