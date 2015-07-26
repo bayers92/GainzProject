@@ -1,7 +1,11 @@
 class WorkoutsController < ApplicationController
   before_action :authenticate_admin!, only: [:edit, :update, :destroy, :create]
-  before_action :set_workout, only: [:show, :edit, :update, :destroy]
+  before_action :set_workout, only: [:show, :edit, :update, :destroy, :leaderboard]
   # load_and_authorize_resource
+
+
+  def leaderboard 
+  end
 
   # GET /workouts
   # GET /workouts.json

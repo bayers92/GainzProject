@@ -1,0 +1,15 @@
+
+<!-- Workout.first.parts.first.wods -->
+
+<% @workout.parts.each do |part| %>
+	<% if part.style ==1 %> <!-- WOD -->
+		<% part.wods.first.scores.each do |score| %>
+			<%= score.result %>
+		<% end %>
+	<% else %> <!-- LIFT -->
+		<% part.lifts.first.scores.each do |score| %>
+			<%= score.result %>
+		<% end %>
+	<% end %>
+<% end %>
+	
