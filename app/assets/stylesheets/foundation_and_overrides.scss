@@ -1742,16 +1742,20 @@ $darker2: darken(adjust-hue($base, -10), 30%);
 	background-color: $base;
 }
 .color2 {
-	background-color: $lighter1;
+	// background-color: $lighter1;
+	background-color: #6354E5;
 }
 .color3 {
-	background-color: $darker1;
+	// background-color: $darker1;
+	background-color: #3CE2B4;
 }
 .color4 {
-	background-color: $lighter2;
+	// background-color: $lighter2;
+	background-color: #77AEF1;
 }
 .color5 {
-	background-color: $darker2;
+	// background-color: $darker2;
+	background-color: #FFB744;
 }
 
 
