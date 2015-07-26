@@ -7,11 +7,14 @@
 		<% part.wods.first.scores.each do |score| %>
 			<p><strong><%= score.user.email %>: <%= score.result %> </p>
 		<% end %>
-	<% else %> <!-- LIFT -->
-	<h3><%= part.lifts.first.title %> </h3>
+	<% elsif part.style == 2 %> <!-- LIFT -->
+	<h3><%= part.lifts.first.category.name %> </h3>
 		<% part.lifts.first.scores.each do |score| %>
 			<p><strong><%= score.user.email %>: <%= score.result %> </p>
 		<% end %>
+		<% else %>
+		<p> something went wrong..</p>
+		<%= part.style %>
 	<% end %>
 <% end %>
 	
