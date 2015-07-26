@@ -1754,6 +1754,32 @@ $darker2: darken(adjust-hue($base, -10), 30%);
 }
 
 
+.leaderboard-button {
+	background-color: rgba(0,0,0,0) !important;
+	border: white solid 2px !important;
+    position: absolute !important;
+    bottom: 0px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // 
 // MOBILE
@@ -1790,10 +1816,14 @@ $darker2: darken(adjust-hue($base, -10), 30%);
 		margin-left: -2.5% !important;
 	}
 	.workout-index {
-		height: 125px !important;
+		height: 160px !important;
+	}
+	.leaderboard-button {
+		position: relative !important;
 	}
 }
-// OFFCANVAS NAV BAR FIX END
+// MOBILE END
+
 
 .no-padding-special {
 	// max-width: none !important;
@@ -1804,5 +1834,4 @@ $darker2: darken(adjust-hue($base, -10), 30%);
 .row.row {
 
 }
-
 @import 'foundation';
