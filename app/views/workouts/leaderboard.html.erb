@@ -2,13 +2,15 @@
 <!-- Workout.first.parts.first.wods -->
 
 <% @workout.parts.each do |part| %>
-	<% if part.style ==1 %> <!-- WOD -->
+	<% if part.style == 1 %> <!-- WOD -->
+		<h3><%= part.wods.first.title %></h3>
 		<% part.wods.first.scores.each do |score| %>
-			<%= score.result %>
+			<p><strong><%= score.user.email %>: <%= score.result %> </p>
 		<% end %>
 	<% else %> <!-- LIFT -->
+	<h3><%= part.lifts.first.title %> </h3>
 		<% part.lifts.first.scores.each do |score| %>
-			<%= score.result %>
+			<p><strong><%= score.user.email %>: <%= score.result %> </p>
 		<% end %>
 	<% end %>
 <% end %>
