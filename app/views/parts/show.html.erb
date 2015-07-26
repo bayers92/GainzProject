@@ -44,8 +44,9 @@
     <% end %>
 
   <% else %>
-    <p> Part NOT created - You need to select stlye of workout for each part </p>
-    <%= link_to 'Back', 'javascript:history.go(-1);' %>
+    <p> You must select a stlye of workout for each part. </p>
+    <p> <u>Please</u> press the delete button to delete this mistake. </p>
+    <%= link_to 'Destroy', @part, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 <% end %>
 
