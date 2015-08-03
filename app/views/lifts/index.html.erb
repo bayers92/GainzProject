@@ -22,7 +22,7 @@
         <th>Workout</th>
       </tr>
     </thead>
-    <% @lifts.last(3).each do |lift| %>
+    <% @lifts.first(3).each do |lift| %>
         <% lift.scores.each do |score| %>
           <% if score.user_id == current_user.id %>
           <tr>
