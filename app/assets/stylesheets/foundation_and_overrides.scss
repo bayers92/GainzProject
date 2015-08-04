@@ -869,7 +869,7 @@ $tabbar-header-margin: 0;
 // $off-canvas-back-hover-border-bottom: none;
 
 // Off Canvas Menu Icon Variables
-$tabbar-menu-icon-color: $secondary-color;
+$tabbar-menu-icon-color: white;
 $tabbar-menu-icon-hover: scale-color($tabbar-menu-icon-color, $lightness: -30%);
 
 $tabbar-menu-icon-text-indent: rem-calc(35);
@@ -1569,6 +1569,19 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 
 .heading {
 	height: 130px;
+	// background-image: -webkit-gradient(
+	// 	linear,
+	// 	left top,
+	// 	right bottom,
+	// 	color-stop(0, #4A91E2),
+	// 	color-stop(1, #3CE2B3)
+	// );
+	// background-image: -o-linear-gradient(right bottom, #4A91E2 0%, #3CE2B3 100%);
+	// background-image: -moz-linear-gradient(right bottom, #4A91E2 0%, #3CE2B3 100%);
+	// background-image: -webkit-linear-gradient(right bottom, #4A91E2 0%, #3CE2B3 100%);
+	// background-image: -ms-linear-gradient(right bottom, #4A91E2 0%, #3CE2B3 100%);
+	// background-image: linear-gradient(to right bottom, #4A91E2 0%, #3CE2B3 100%);
+	background-color: #EC6F66;
 	img {
 		padding-top: 30px;
 		height: 80px;
@@ -1580,7 +1593,7 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 		padding-top: 30px;
 		font-weight: normal;
 		a {
-			color: $secondary-color !important;
+			color: white !important;
 		}
 	}
 }
@@ -1760,6 +1773,27 @@ $darker2: darken(adjust-hue($base, -10), 30%);
 	background-color: #FFB744;
 }
 
+// .color1 {
+//   background: -webkit-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* Chrome 10+, Saf5.1+ */
+//   background:    -moz-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* FF3.6+ */
+//   background:     -ms-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* IE10 */
+//   background:      -o-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* Opera 11.10+ */
+//   background:         linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* W3C */
+// }
+// .color2 {
+
+// }
+// .color3 {
+
+// }
+// .color4 {
+
+// }
+// .color5 {
+
+// }
+
+
 
 .leaderboard-button {
 	background-color: rgba(0,0,0,0) !important;
@@ -1806,6 +1840,7 @@ $darker2: darken(adjust-hue($base, -10), 30%);
 		margin-right: 0 !important;
 		margin-left: 0 !important;
 		margin-left: -2.5% !important;
+		padding-top: 0px !important;
 	}
 	.workout-index {
 		height: 160px !important;
@@ -1830,5 +1865,9 @@ $darker2: darken(adjust-hue($base, -10), 30%);
 
 .row.row {
 
+}
+
+.layout-row {
+	padding-top: 0px !important;
 }
 @import 'foundation';
