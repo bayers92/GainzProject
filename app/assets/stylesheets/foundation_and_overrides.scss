@@ -1572,6 +1572,9 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 }
 .heading {
 	height: 100px;
+
+	box-shadow: 0 1px 5px 2px rgba(0,0,0,.15);
+	
 	// background-image: -webkit-gradient(
 	// 	linear,
 	// 	left top,
