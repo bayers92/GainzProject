@@ -1,5 +1,5 @@
 <div class = "row">
-  <div class = "small-11 small-centered medium-8 columns instance">
+  <div class = "small-11 medium-8 small-centered columns instance">
     <h1><%= @workout.title %></h1>
     <p class = "date"><%= @workout.workout_date.to_formatted_s(:my_long_ordinal) %> </p>
 
@@ -20,11 +20,11 @@
     <% end %>
     <br/>
     <% end %>
+  </div>
 
-
-    <% @n = 1 %>
-    <% @workout.parts.each do |part| %>
-
+  <% @n = 1 %>
+  <% @workout.parts.each do |part| %>
+  <div class = "small-11 medium-8 small-centered columns instance">
     <% if part.wods.first || part.lifts.first != nil %>
     <h3> Part <%= @n %>: </h3>
 
@@ -132,20 +132,24 @@
     <!-- END TYPE FOR PART SECTION -->
     <% end %>
     <!-- END IF PART STYLE != 0 -->
+  </div>
 
-    
-    <% @n += 1 %>
-    <% end %>
-    <% end %>
+  <% @n += 1 %>
+  <% end %>
+  <% end %>
 
 
-    <br/>
+  <br/>
+  <div class = "small-11 medium-8 small-centered columns">
     <% if admin_signed_in? %>
     <%= link_to 'Edit Workout Name', edit_workout_path(@workout) %> |
     <% end %>
-    <%= link_to 'Back', workouts_path %>
 
-    <br/>
-    <br/>
+    <%= link_to workouts_path do %>
+      <i class="fa fa-arrow-left"></i> Back
+    <% end %>
   </div>
+
+  <br/>
+  <br/>
 </div>
