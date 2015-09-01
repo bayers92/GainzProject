@@ -1,9 +1,11 @@
-<h1><%= @workout.title %></h1>
-<p class = "date"><%= @workout.workout_date.to_formatted_s(:my_long_ordinal) %> </p>
+<div class = "row">
+  <div class = "small-11 small-centered medium-6 columns instance">
+    <h1><%= @workout.title %></h1>
+    <p class = "date"><%= @workout.workout_date.to_formatted_s(:my_long_ordinal) %> </p>
 
 
-<% if admin_signed_in? %>
-  <%= simple_form_for([@workout, @workout.parts.build]) do |f| %>
+    <% if admin_signed_in? %>
+    <%= simple_form_for([@workout, @workout.parts.build]) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
@@ -15,133 +17,135 @@
     <div class="form-actions">
       <%= f.button :submit %>
     </div>
-  <% end %>
-  <br/>
-<% end %>
+    <% end %>
+    <br/>
+    <% end %>
 
 
-<% @n = 1 %>
-<% @workout.parts.each do |part| %>
+    <% @n = 1 %>
+    <% @workout.parts.each do |part| %>
 
-  <% if part.wods.first || part.lifts.first != nil %>
+    <% if part.wods.first || part.lifts.first != nil %>
     <h3> Part <%= @n %>: </h3>
 
     <!-- WOD STYLE WORKOUT -->
     <% if part.style == 1 %>  
-      <% part.wods.each do |wod| %>
-        <div class = "show-part-details">
-          <p class = "title"><%= wod.title %></p>
-          <p class = "description"><%= wod.description %></p>
-          <!-- <p class = "result-label">Record <%= wod.result_label %></p> -->
-          <% @my_wod_id = wod.id %>
-        </div>
+    <% part.wods.each do |wod| %>
+    <div class = "show-part-details">
+      <p class = "title"><%= wod.title %></p>
+      <p class = "description"><%= wod.description %></p>
+      <!-- <p class = "result-label">Record <%= wod.result_label %></p> -->
+      <% @my_wod_id = wod.id %>
+    </div>
 
 
 
-        <!-- IF USER SIGNED IN -->
-        <% if user_signed_in? %>
-          <% if current_user.scores.where(:wod_id => @my_wod_id).blank? %>
+    <!-- IF USER SIGNED IN -->
+    <% if user_signed_in? %>
+    <% if current_user.scores.where(:wod_id => @my_wod_id).blank? %>
 
-            <!-- START SCORE FORM -->
-            <%= simple_form_for([wod, wod.scores.build]) do |f| %>
-              <%= f.error_notification %>
+    <!-- START SCORE FORM -->
+    <%= simple_form_for([wod, wod.scores.build]) do |f| %>
+    <%= f.error_notification %>
 
-              <div class="form-inputs">
-                <%= f.input :result %>
-                <%= f.association :user, :as => :hidden, input_html: { value: current_user.id }%>
-                <%= f.association :lift, :as => :hidden %>
-                <%= f.association :wod, :as => :hidden %>
-              </div>
+    <div class="form-inputs">
+      <%= f.input :result %>
+      <%= f.association :user, :as => :hidden, input_html: { value: current_user.id }%>
+      <%= f.association :lift, :as => :hidden %>
+      <%= f.association :wod, :as => :hidden %>
+    </div>
 
-              <div class="form-actions">
-                <%= f.button :submit %>
-              </div>
-            <% end %>
-            <!-- End Score Form -->
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+    <% end %>
+    <!-- End Score Form -->
 
-          <% else %> <!-- DISPLAY EXISTING SCORE -->
-              <% @my_wod_score = current_user.scores.where(:wod_id => @my_wod_id).first %>
-                <p class ="result"> Result: <%= @my_wod_score.result %> </p>
-                <p class = "edit-result">
-                  <%= link_to 'Edit Score', edit_score_path(@my_wod_score) %> | <%= link_to 'Delete Score', @my_wod_score, method: :delete, data: { confirm: 'Are you sure?' } %>
-                </p>
-          <% end %>
+    <% else %> <!-- DISPLAY EXISTING SCORE -->
+    <% @my_wod_score = current_user.scores.where(:wod_id => @my_wod_id).first %>
+    <p class ="result"> Result: <%= @my_wod_score.result %> </p>
+    <p class = "edit-result">
+      <%= link_to 'Edit Score', edit_score_path(@my_wod_score) %> | <%= link_to 'Delete Score', @my_wod_score, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+    <% end %>
 
-          <% elsif admin_signed_in? %>
-            <p class = "edit-result">
-              <%= link_to 'Edit Part', edit_wod_path(wod) %> | 
-              <%= link_to 'Delete Part', part, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </p>
-          <% end %>
+    <% elsif admin_signed_in? %>
+    <p class = "edit-result">
+      <%= link_to 'Edit Part', edit_wod_path(wod) %> | 
+      <%= link_to 'Delete Part', part, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+    <% end %>
 
 
-      <% end %>
+    <% end %>
 
     <% elsif part.style == 2 %>  <!-- LIFT STYLE PART -->
-      
-      <% part.lifts.each do |lift| %>
-        <div class = "show-part-details">
-          <p class = "title"><%= lift.category.name %> ( <%= pluralize(lift.rep_count , 'rep') %> )</p>
-          <p class = "description"><%= lift.timing %></p>
-          <p class = "description"><%= lift.description %></p>
-          <!-- <p class = "rep-count"><%= lift.rep_count %></p> -->
-          <% @my_lift_id = lift.id %>
-        </div>
 
-        <!-- IF USER SIGNED IN -->
-        <% if user_signed_in? %>
+    <% part.lifts.each do |lift| %>
+    <div class = "show-part-details">
+      <p class = "title"><%= lift.category.name %> ( <%= pluralize(lift.rep_count , 'rep') %> )</p>
+      <p class = "description"><%= lift.timing %></p>
+      <p class = "description"><%= lift.description %></p>
+      <!-- <p class = "rep-count"><%= lift.rep_count %></p> -->
+      <% @my_lift_id = lift.id %>
+    </div>
 
-          <!-- IF NO SCORE -->
-          <% if current_user.scores.where(:lift_id => @my_lift_id).blank? %>
+    <!-- IF USER SIGNED IN -->
+    <% if user_signed_in? %>
 
-            <%= simple_form_for([lift, lift.scores.build]) do |f| %>
-              <%= f.error_notification %>
+    <!-- IF NO SCORE -->
+    <% if current_user.scores.where(:lift_id => @my_lift_id).blank? %>
 
-              <div class="form-inputs">
-                <%= f.input :result %>
-                <%= f.association :user, :as => :hidden, input_html: { value: current_user.id }%>
-                <%= f.association :lift, :as => :hidden %>
-                <%= f.association :wod, :as => :hidden %>
-              </div>
+    <%= simple_form_for([lift, lift.scores.build]) do |f| %>
+    <%= f.error_notification %>
 
-              <div class="form-actions">
-                <%= f.button :submit %>
-              </div>
-            <% end %> <!-- End Score Form -->
+    <div class="form-inputs">
+      <%= f.input :result %>
+      <%= f.association :user, :as => :hidden, input_html: { value: current_user.id }%>
+      <%= f.association :lift, :as => :hidden %>
+      <%= f.association :wod, :as => :hidden %>
+    </div>
 
-          <% else %> <!-- DISPLAY EXISTING SCORE -->
-              <% @my_lift_score = current_user.scores.where(:lift_id => @my_lift_id).first %>
-                <p class ="result"> Result: <%= @my_lift_score.result %> </p>
-                <p class = "edit-result">
-                  <%= link_to 'Edit Score', edit_score_path(@my_lift_score) %> | <%= link_to 'Delete Score', @my_lift_score, method: :delete, data: { confirm: 'Are you sure?' } %>
-                </p>
-          <% end %>
-          <!-- END SCORE SECTION -->
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+    <% end %> <!-- End Score Form -->
 
-        <% elsif admin_signed_in? %>
-          <p class = "edit-result">
-            <%= link_to 'Edit Part', edit_lift_path(lift) %> | 
-            <%= link_to 'Delete Part', part, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </p>
+    <% else %> <!-- DISPLAY EXISTING SCORE -->
+    <% @my_lift_score = current_user.scores.where(:lift_id => @my_lift_id).first %>
+    <p class ="result"> Result: <%= @my_lift_score.result %> </p>
+    <p class = "edit-result">
+      <%= link_to 'Edit Score', edit_score_path(@my_lift_score) %> | <%= link_to 'Delete Score', @my_lift_score, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+    <% end %>
+    <!-- END SCORE SECTION -->
 
-        <% end %>
-        <!-- END IF USER SIGNED IN -->
-      <% end %>
-      <!-- END TYPE FOR PART SECTION -->
+    <% elsif admin_signed_in? %>
+    <p class = "edit-result">
+      <%= link_to 'Edit Part', edit_lift_path(lift) %> | 
+      <%= link_to 'Delete Part', part, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+
+    <% end %>
+    <!-- END IF USER SIGNED IN -->
+    <% end %>
+    <!-- END TYPE FOR PART SECTION -->
     <% end %>
     <!-- END IF PART STYLE != 0 -->
 
     
     <% @n += 1 %>
-  <% end %>
-<% end %>
+    <% end %>
+    <% end %>
 
 
-<br/>
-<% if admin_signed_in? %>
-<%= link_to 'Edit Workout Name', edit_workout_path(@workout) %> |
-<% end %>
-<%= link_to 'Back', workouts_path %>
+    <br/>
+    <% if admin_signed_in? %>
+    <%= link_to 'Edit Workout Name', edit_workout_path(@workout) %> |
+    <% end %>
+    <%= link_to 'Back', workouts_path %>
 
-<br/>
-<br/>
+    <br/>
+    <br/>
+  </div>
+</div>
