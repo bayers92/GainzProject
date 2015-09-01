@@ -1,19 +1,24 @@
 <div class = "row no-padding-special data-equalizer">
-	<ul class="small-block-grid-1 medium-block-grid-3 ">
-		<% @z = 1 %>
-		<% @workouts.each do |workout| %>
-			<li class = "workout-index color<%=@z%> data-equalizer-watch">
-		  	  <p class = "date"><%= workout.workout_date.to_formatted_s(:my_long_ordinal) %> </p>
-			  <h2 class = "title"><%= link_to workout.title, workout %></h2>
-			  <%= button_to "Leaderboard", [:leaderboard, workout], :class => "button round leaderboard-button tiny", :method => :get  %>
-			  				<% if admin_signed_in? %>
-					<p class = "edit-links smaller-text">
-					  <%= link_to 'Edit', edit_workout_path(workout) %> | 
-					  <%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %>
-					</p>
-				<% end%>
-			</li>
-			<% if @z < 5 %> <% @z += 1 %> <% else %> <% @z = 1 %><%end%>
-		<% end %>
-	</ul>
+	<% @z = 1 %>
+	<% @workouts.each do |workout| %>
+	<div class = "small-11 medium-6 columns small-centered workout-index color<%=@z%> data-equalizer-watch instance">
+		<p class = "date"><%= workout.workout_date.to_formatted_s(:my_long_ordinal) %> </p>
+		<h2 class = "title"><%= link_to workout.title, workout %></h2>
+		<%= button_to "Leaderboard", [:leaderboard, workout], :class => "button round leaderboard-button tiny", :method => :get  %>
+		<% if admin_signed_in? %>
+		<p class = "edit-links smaller-text">
+			<%= link_to 'Edit', edit_workout_path(workout) %> | 
+			<%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %>
+		</p>
+		<% end%>
+	</div>
+	<!-- Increment color selector until 5 -->
+	<% if @z < 5 %> <% @z += 1 %> <% else %> <% @z = 1 %><%end%>
+	<% end %>
 </div>
+
+
+
+<!-- 
+<div class = "row no-padding-special data-equalizer">
+	<ul class="small-block-grid-1 medium-block-grid-3 "> -->

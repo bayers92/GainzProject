@@ -146,8 +146,8 @@ $pontano: 'Pontano Sans', sans-serif;
 // @import url(http://fonts.googleapis.com/css?family=EB+Garamond);
 // $garamond: 'EB Garamond', serif;
 
-$body-bg: $white;
-$body-font-color: $medium-gray;
+$body-bg: $white-smoke;
+$body-font-color: $primary-color;
 $body-font-family: $merriweather;
 $body-font-weight: normal;
 $body-font-style: normal;
@@ -1587,7 +1587,7 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 	// background-image: -webkit-linear-gradient(right bottom, #4A91E2 0%, #3CE2B3 100%);
 	// background-image: -ms-linear-gradient(right bottom, #4A91E2 0%, #3CE2B3 100%);
 	// background-image: linear-gradient(to right bottom, #4A91E2 0%, #3CE2B3 100%);
-	background-color: #EC6F66;
+	background-color: $primary-color;
 	img {
 		padding-top: 30px;
 		height: 80px;
@@ -1707,7 +1707,7 @@ textarea {
 	    float: right;
 	    padding-top: 20px;
 		a {
-			color: white;
+			// color: white;
 		}
 	}
 
@@ -1759,25 +1759,54 @@ $darker2: darken(adjust-hue($base, -10), 30%);
 
 
 // http://colorschemedesigner.com/csd-3.5/
+
+$color1: $primary-color;
+$color2: #EC6F66;
+$color3: #6354E5;
+$color4: #EC6F66;
+$color5: #FFB744;
+
 .color1 {
-	background-color: $base;
+	p, h2, .button, a {
+		color: $color1 !important;
+	}
+	.leaderboard-button {
+		border: $color1;
+	}
 }
 .color2 {
-	// background-color: $lighter1;
-	background-color: #6354E5;
+	p, h2, .button, a {
+		color: $color2 !important;
+	}
+	.leaderboard-button {
+		border: $color2;
+	}
 }
 .color3 {
-	// background-color: $darker1;
-	background-color: #3CE2B4;
+	p, h2, .button, a {
+		color: $color3 !important;
+	}
+	.leaderboard-button {
+		border: $color3;
+	}
 }
 .color4 {
-	// background-color: $lighter2;
-	background-color: #185093;
+	p, h2, .button, a {
+		color: $color4 !important;
+	}
+	.leaderboard-button {
+		border: $color4;
+	}
 }
 .color5 {
-	// background-color: $darker2;
-	background-color: #FFB744;
+	p, h2, .button, a {
+		color: $color5 !important;
+	}
+	.leaderboard-button {
+		border: $color5;
+	}
 }
+
 
 // .color1 {
 //   background: -webkit-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* Chrome 10+, Saf5.1+ */
@@ -1802,8 +1831,8 @@ $darker2: darken(adjust-hue($base, -10), 30%);
 
 
 .leaderboard-button {
+	border: solid 2px !important;
 	background-color: rgba(0,0,0,0) !important;
-	border: white solid 2px !important;
     position: absolute !important;
     margin-top: 10px !important;
     max-width: 50%;
@@ -1883,4 +1912,24 @@ $darker2: darken(adjust-hue($base, -10), 30%);
 .tab-bar {
 	margin-top: 18px;
 }
+
+
+
+
+
+.instance {
+	background-color: white;
+	padding: 20px; // for text inside
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px; 
+	-khtml-border-radius: 10px;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+
+
 @import 'foundation';
