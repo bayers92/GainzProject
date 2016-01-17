@@ -1938,7 +1938,8 @@ $color5: #FFB744;
 
 
 section {
-    overflow-y: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 section,
 body,
