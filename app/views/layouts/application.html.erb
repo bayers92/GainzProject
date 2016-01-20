@@ -39,6 +39,12 @@
 					</section>
 				</nav>
 			</div>
+			<div class = "heading-push"></div>
+				<div class = "heading fixed zFront sticky">
+					<div class = "small-12 columns text-center">
+						<%= link_to image_tag('Gainz_logo.png'), root_url %>
+					</div>
+				</div>
 
 			<!-- MOBILE NAVIGATION OFFCANVAS LIST -->
 			<aside class="right-off-canvas-menu" aria-hidden="true">
@@ -48,12 +54,7 @@
 
 
 			<section class="main-section">
-				<div class = "heading-push"></div>
-				<div class = "heading fixed zFront sticky">
-					<div class = "small-12 columns text-center">
-						<%= link_to image_tag('Gainz_logo.png'), root_url %>
-					</div>
-				</div>
+			
 				<div class = "row layout-row">
 				    <!-- <%= render 'application/alerts' %> -->
 					<%= yield %>
