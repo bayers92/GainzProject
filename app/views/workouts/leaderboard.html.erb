@@ -1,10 +1,10 @@
-
+<% x = 2 %>
 <% if admin_signed_in? || user_signed_in? %>
 	<div class = "row">
 		<% @workout.parts.each do |part| %>
 		<div class = "small-11 medium-8 small-centered columns instance">
+			<strong><h2>Part <%= x %>:</h2></strong>
 			<% if part.style == 1 %> <!-- WOD -->
-				<h3><%= part.wods.first.title %></h3>
 				<% if part.wods.first.scores.first == nil %>
 				<p> No scores reported </p>
 			<% else %>
@@ -19,7 +19,6 @@
 			<% end %>
 			<% end %>
 			<% elsif part.style == 2 %> <!-- LIFT -->
-			<h3><%= part.lifts.first.category.name %> </h3>
 			<% if part.lifts.first.scores.first == nil %>
 			<p> No scores reported </p>
 			<% else %>
@@ -36,6 +35,7 @@
 			<% else %> <!-- No Part Style (mess up) -->
 			<% end %>
 		</div>
+		<% x += 1 %>
 		<% end %>
 		<%= link_to 'Back', workouts_path %>
 	</div>
