@@ -1568,10 +1568,10 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 }
 
 .heading-push {
-	height: 100px;
+	height: 120px;
 }
 .heading {
-	height: 100px;
+	height: 120px;
 
 	box-shadow: 0 1px 5px 2px rgba(0,0,0,.15);
 	
@@ -1589,8 +1589,8 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 	// background-image: linear-gradient(to right bottom, #4A91E2 0%, #3CE2B3 100%);
 	background-color: $primary-color;
 	img {
-		padding-top: 10px;
-		height: 90px;
+		margin-top: 30px;
+		height: 60px;
 		width: auto;
 		margin-left: auto;
 		margin-right: auto;
@@ -1668,6 +1668,7 @@ textarea {
 	// width: 25% !important;
 	right: 0 !important;
 	left: auto;
+	margin-top: 10px;
 }
 
 .workout {
