@@ -29,3 +29,7 @@ $(document).foundation({
     close_on_click : true
   }
 });
+
+function goBack() {
+    window.history.back();
+}

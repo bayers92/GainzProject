@@ -1589,8 +1589,8 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 	// background-image: linear-gradient(to right bottom, #4A91E2 0%, #3CE2B3 100%);
 	background-color: $primary-color;
 	img {
-		padding-top: 30px;
-		height: 80px;
+		padding-top: 10px;
+		height: 90px;
 		width: auto;
 		margin-left: auto;
 		margin-right: auto;
@@ -1665,7 +1665,7 @@ textarea {
 }
 
 #fixed-nav {
-	width: 25% !important;
+	// width: 25% !important;
 	right: 0 !important;
 	left: auto;
 }
@@ -1811,6 +1811,7 @@ $color5: #FFB744;
 	}
 	border-left: $color5 5px solid;
 }
+
 
 
 // .color1 {
@@ -1961,5 +1962,12 @@ html,
 	color: $primary-color !important;
 }
 
+
+.left-small {
+	padding-left: 15px;
+	i {
+		color: white;
+	}
+}
 
 @import 'foundation';

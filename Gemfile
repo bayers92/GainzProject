@@ -64,5 +64,7 @@ gem 'has_scope'
 
 gem 'roman-numerals', '~> 0.3.0'
 
+gem 'font-awesome-sass'
+
 
 
