@@ -1912,7 +1912,7 @@ $color5: #FFB744;
 	padding-top: 0px !important;
 }
 
-.fixed2 {
+.zFront {
     z-index: 98 !important;
 }
 .tab-bar {
@@ -1955,6 +1955,10 @@ html,
     top: 0;
     width: 100%;
     z-index: 99;
+}
+
+.primary-color {
+	color: $primary-color !important;
 }
 
 
