@@ -1592,8 +1592,8 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 	// background-image: linear-gradient(to right bottom, #4A91E2 0%, #3CE2B3 100%);
 	// background-color: $primary-color;
 	img {
-		margin-top: 30px;
-		height: 60px;
+		// margin-top: 30px;
+		max-height: 70px;
 		width: auto;
 		margin-left: auto;
 		margin-right: auto;
