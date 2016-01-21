@@ -1,3 +1,4 @@
+<% if admin_signed_in? || user_signed_in? %>
 <div class = "row">
   <div class = "small-11 medium-8 small-centered columns instance">
     <h1><%= @workout.title %></h1>
@@ -151,3 +152,10 @@
   <% end %>
 
 </div>
+<% else %>
+  <div class = "small-11 medium-8 small-centered columns instance">
+    <p> Please <u><%= link_to('login', new_user_session_path)  %></u> to view the workout </p>
+
+  </div>
+<% end %>
+
