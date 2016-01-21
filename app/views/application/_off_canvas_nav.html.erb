@@ -81,7 +81,7 @@
 <!-- ADMIN VIEW -->
 <% elsif admin_signed_in? %>
 	<ul class="off-canvas-list">
-		<li><label> </label></li>
+		<li><label><br/></label></li>
 		<li>
 			<%= link_to 'New Workout', new_workout_path %>
 		</li>
@@ -96,7 +96,7 @@
 <!-- GUEST VIEW -->
 <% else %>
 	<ul class="off-canvas-list">
-		<li><label> </label></li>
+		<li><label><br/></label></li>
 		<li>
 			<% if user_signed_in? %>
 			<%= link_to('User Logout', destroy_user_session_path, :method => :delete) %>        
