@@ -1568,12 +1568,15 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 }
 
 .heading-push {
-	height: 120px;
+	height: 110px;
+	background-color: $primary-color;
+
+	box-shadow: 0 1px 5px 2px rgba(0,0,0,.15);
 }
 .heading {
 	height: 110px;
 
-	box-shadow: 0 1px 5px 2px rgba(0,0,0,.15);
+	// box-shadow: 0 1px 5px 2px rgba(0,0,0,.15);
 	
 	// background-image: -webkit-gradient(
 	// 	linear,
@@ -1587,7 +1590,7 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 	// background-image: -webkit-linear-gradient(right bottom, #4A91E2 0%, #3CE2B3 100%);
 	// background-image: -ms-linear-gradient(right bottom, #4A91E2 0%, #3CE2B3 100%);
 	// background-image: linear-gradient(to right bottom, #4A91E2 0%, #3CE2B3 100%);
-	background-color: $primary-color;
+	// background-color: $primary-color;
 	img {
 		margin-top: 30px;
 		height: 60px;
@@ -1915,7 +1918,7 @@ $color5: #FFB744;
 }
 
 .zFront {
-    z-index: 98 !important;
+    z-index: 998 !important;
 }
 .tab-bar {
 	margin-top: 18px;

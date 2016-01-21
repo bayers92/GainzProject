@@ -35,8 +35,16 @@
 	<div class="off-canvas-wrap fixed" data-offcanvas>
 		<div class="inner-wrap">
 			<!-- MOBILE NAV BAR -->
+<!-- 			<div class = "heading fixed zFront sticky">
+				<div class = "small-6 small-centered columns text-center">
+					<%= link_to image_tag('Gainz_logo.png'), root_url %>
+				</div>
+			</div> -->
 			<div class = "fixed" id="fixed-nav">
-				<nav class="tab-bar">
+				<nav class="tab-bar" data-options="is_hover: false">
+									<div class = "small-6 small-centered columns text-center">
+					<%= link_to image_tag('Gainz_logo.png'), root_url %>
+				</div>
 					<section class="right-small">
 						<a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
 					</section>
@@ -46,11 +54,6 @@
 				</nav>
 			</div>
 			<div class = "heading-push"></div>
-				<div class = "heading fixed zFront sticky">
-					<div class = "small-12 columns text-center">
-						<%= link_to image_tag('Gainz_logo.png'), root_url %>
-					</div>
-				</div>
 
 			<!-- MOBILE NAVIGATION OFFCANVAS LIST -->
 			<aside class="right-off-canvas-menu" aria-hidden="true">
