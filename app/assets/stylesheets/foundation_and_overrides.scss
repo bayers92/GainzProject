@@ -1565,7 +1565,7 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 
 .main-section {
 	min-height: 100vh;
-	padding-top: 150px;
+	padding-top: 130px;
 }
 
 .heading-push {
@@ -1649,6 +1649,10 @@ textarea {
 	padding-top: 50px;
 }
 
+.row.schedule {
+	height: 40px;
+}
+
 
 .simple_form .field_with_hint input{
   margin-bottom: 0;
@@ -1715,8 +1719,9 @@ textarea {
 			// color: white;
 		}
 	}
-
 }
+
+
 
 .color-red {
 	color: rgba(255, 0, 0, .5);
@@ -1932,6 +1937,16 @@ $color5: #FFB744;
     float: left;
 }
 
+.schedule-button-active {
+
+}
+
+.schedule-button-inactive {
+	border: solid 2px !important;
+	background-color: rgba(0,0,0,0) !important;
+	color: $primary-color !important;
+}
+
 
 
 
@@ -2053,6 +2068,10 @@ html,
 	i {
 		color: white;
 	}
+}
+
+.future {
+	height: 120px !important;
 }
 
 @import 'foundation';

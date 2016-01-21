@@ -1,6 +1,15 @@
+<!-- 
+<div class = "row schedule">
+	<div class = "small-12 medium-6 columns small-centered text-center">
+
+	<div class="small button-group">
+		<a class="button schedule-button-active" href="/">Current</a>
+		<a class="button schedule-button-inactive" href="/future-workouts">Future</a>
+	</div>
+
+</div> -->
+
 <div class = "row no-padding-special data-equalizer">
-	<%= link_to "Upcoming", workouts_path(:category=>"future") %>
-	<%= link_to "Current Workouts", root_url %>
 	<% @z = 1 %>
 	<% @workouts.each do |workout| %>
 			<div class = "small-11 medium-6 columns small-centered workout-index color<%=@z%> data-equalizer-watch instance">

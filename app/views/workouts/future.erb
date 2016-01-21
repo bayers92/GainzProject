@@ -1,12 +1,21 @@
+<!-- 
+<div class = "row schedule">
+	<div class = "small-12 medium-6 columns small-centered text-center">
+
+	<div class="small button-group">
+		<a class="button schedule-button-inactive" href="/">Current</a>
+		<a class="button schedule-button-active" href="/future-workouts">Future</a>
+	</div>
+
+</div> -->
+
 <div class = "row no-padding-special data-equalizer">
-	<%= link_to "Upcoming", workouts_path(:category=>"future") %>
-	<%= link_to "Current Workouts", root_url %>
+
 	<% @z = 1 %>
 	<% @workouts.each do |workout| %>
-			<div class = "small-11 medium-6 columns small-centered workout-index color<%=@z%> data-equalizer-watch instance">
+			<div class = "small-11 medium-6 columns small-centered workout-index future color<%=@z%> data-equalizer-watch instance">
 				<p class = "date"><%= workout.workout_date.to_formatted_s(:my_long_ordinal) %> </p>
-				<h2 class = "title"><%= link_to workout.title, workout %></h2>
-				<%= button_to "Leaderboard", [:leaderboard, workout], :class => "button round leaderboard-button tiny", :method => :get  %>
+				<h2 class = "title"><%= workout.title  %></h2>
 				<% if admin_signed_in? %>
 				<p class = "edit-links smaller-text">
 					<%= link_to 'Edit', edit_workout_path(workout) %> | 
@@ -25,4 +34,31 @@
 
 <!-- 
 <div class = "row no-padding-special data-equalizer">
-	<ul class="small-block-grid-1 medium-block-grid-3 "> -->
+	<ul class="small-block-grid-1 medium-block-grid-3 "
+
+
+
+
+
+ 		<div class = "small-6 columns text-center">
+			<%= button_to "Current", root_url, :class => "button round schedule-unchecked tiny", :method => :get %>
+		</div>
+		<div class = "small-6 columns text-center">
+			<%= button_to "Upcoming", "future-workouts", :class => "button round schedule-unchecked tiny", :method => :get %>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+	<%= button_to "Upcoming", workouts_path(:category=>"future"), :class => "button round leaderboard-button tiny"%>
+	<br/>
+	<%= link_to "Upcoming", workouts_path(:category=>"future") %>
+	<%= link_to "Current Workouts", root_url %>
+
+	-->
