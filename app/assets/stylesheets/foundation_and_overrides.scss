@@ -1565,6 +1565,7 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 
 .main-section {
 	min-height: 100vh;
+	padding-top: 120px;
 }
 
 .heading-push {
@@ -1572,6 +1573,10 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 	background-color: $primary-color;
 
 	box-shadow: 0 1px 5px 2px rgba(0,0,0,.15);
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    width: 100%;
 }
 .heading {
 	height: 110px;
@@ -1915,6 +1920,7 @@ $color5: #FFB744;
 
 .layout-row {
 	padding-top: 0px !important;
+	margin-bottom: 150px !important;
 }
 
 .zFront {
