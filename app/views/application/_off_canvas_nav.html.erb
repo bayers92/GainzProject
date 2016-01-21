@@ -1,10 +1,65 @@
 <!-- USER VIEW -->
 <% if user_signed_in? %>
 	<ul class="off-canvas-list">
-		<li><label>#GainzProject</label></li>
-		<% Category.all.each do |category| %>
+		<li><label></label></li>
+<!-- 		<% Category.all.each do |category| %>
 			<li> <a href ="/lifts?by_style=<%=category.style%>"> <%= category.name %> </a></li>
-		<% end %>
+		<% end %> -->
+
+		<span class = "primary-color-background">
+			<li class = "custom-label">Squat</li>
+		</span>
+		<span class = "primary-color">
+			<li> <a href = "/lifts?by_style=11" > Back Squat </a></li>
+			<li> <a href = "/lifts?by_style=9" > Front Squat </a></li>
+			<li> <a href = "/lifts?by_style=10" > Overhead Squat </a></li>
+			<li> <a href = "/lifts?by_style=12" > Thruster </a></li>
+		</span>
+
+		<span class = "second-color-background">
+			<li class = "custom-label">Press</li>
+		</span>
+		<span class = "second-color">
+			<li> <a href = "/lifts?by_style=13" > Shoulder Press </a></li>
+			<li> <a href = "/lifts?by_style=14" > Push Press </a></li>
+			<li> <a href = "/lifts?by_style=15" > Push Jerk </a></li>
+			<li> <a href = "/lifts?by_style=16" > Split Jerk </a></li>
+			<li> <a href = "/lifts?by_style=19" > Bench Press </a></li>
+		</span>
+
+
+		<span class = "third-color-background">
+			<li class = "custom-label">Snatch</li>
+		</span>
+		<span class = "third-color">
+			<li> <a href = "/lifts?by_style=1" > Squat Snatch </a></li>
+			<li> <a href = "/lifts?by_style=2" > Power Snatch </a></li>
+			<li> <a href = "/lifts?by_style=3" > Hang Power Snatch </a></li>
+			<li> <a href = "/lifts?by_style=4" > Snatch Balance </a></li>
+		</span>
+
+
+		<span class = "fourth-color-background">
+			<li class = "custom-label">Clean</li>
+		</span>
+		<span class = "fourth-color">
+			<li> <a href = "/lifts?by_style=5" > Squat Clean </a></li>
+			<li> <a href = "/lifts?by_style=6" > Power Clean </a></li>
+			<li> <a href = "/lifts?by_style=7" > Hang Power Clean </a></li>
+			<li> <a href = "/lifts?by_style=8" > Clean and Jerk </a></li>
+		</span>
+
+		<span class = "fifth-color-background">
+			<li class = "custom-label">Deadlift</li>
+		</span>
+		<span class = "fifth-color">
+			<li> <a href = "/lifts?by_style=17" > Deadlift </a></li>
+			<li> <a href = "/lifts?by_style=18" > Sumo Deadlift </a></li>
+			<li> <a href = "/lifts?by_style=20" > Sumo Deadlift High Pull </a></li>
+		</span>
+
+
+
 		<li><label>Account Settings </label></li>
 		<li>
 			<%= link_to('Edit Username', edit_user_path(current_user)) %>
@@ -20,7 +75,7 @@
 <!-- ADMIN VIEW -->
 <% elsif admin_signed_in? %>
 	<ul class="off-canvas-list">
-		<li><label>#GainzProject</label></li>
+		<li><label> </label></li>
 		<li>
 			<%= link_to 'New Workout', new_workout_path %>
 		</li>
@@ -35,13 +90,13 @@
 <!-- GUEST VIEW -->
 <% else %>
 	<ul class="off-canvas-list">
-		<li><label>#GainzProject</label></li>
+		<li><label> </label></li>
 		<li>
 			<% if user_signed_in? %>
 			<%= link_to('User Logout', destroy_user_session_path, :method => :delete) %>        
 			<% else %>
-			<span class ="primary-color"><%= link_to('Login', new_user_session_path)  %></span> 
-			<%= link_to("Sign up", new_user_registration_path) %>
+			<span class ="second-color-background"><%= link_to('Login', new_user_session_path)  %></span> 
+			<span class ="second-color"><%= link_to("Sign up", new_user_registration_path) %> </span>
 			<% end %>
 		</li>
 <!-- 		<li>

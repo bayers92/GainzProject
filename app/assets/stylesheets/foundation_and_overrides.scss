@@ -1644,10 +1644,6 @@ textarea {
 }
 
 
-.primary-color {
-	color: $primary-color;
-}
-
 
 .row.extra-padding-top {
 	padding-top: 50px;
@@ -1821,7 +1817,89 @@ $color5: #FFB744;
 	border-left: $color5 5px solid;
 }
 
+								// Color shortcuts
+.primary-color {
+	color: $primary-color !important;
+	a {
+		color: $primary-color !important;
+	}
+}
+.primary-color-background {
+	background-color: $primary-color !important;
+	a, li {
+		background-color: $primary-color !important;
+	}
+}
+.second-color {
+	color: $color2 !important;
+	a {
+		color: $color2 !important;
+	}
+}
+.second-color-background {
+	background-color: $color2 !important;
+	a, li {
+		background-color: $color2 !important;
+	}
+}
+.second-color-lighter {
+	color: lighten($color2, 15%) !important;
+	a {
+		color: lighten($color2, 15%) !important;
+	}
+}
+.third-color {
+	color: $color3 !important;
+	a {
+		color: $color3 !important;
+	}
+}
+.third-color-background {
+	background-color: $color3 !important;
+	a, li {
+		background-color: $color3 !important;
+	}
+}
+.fourth-color {
+	color: $color4 !important;
+	a {
+		color: $color4 !important;
+	}
+}
+.fourth-color-background {
+	background-color: $color4 !important;
+	a, li {
+		background-color: $color4 !important;
+	}
+}
+.fifth-color {
+	color: $color5 !important;
+	a {
+		color: $color5 !important;
+	}
+}
+.fifth-color-background {
+	background-color: $color5 !important;
+	a, li {
+		background-color: $color5 !important;
+	}
+}
 
+
+
+
+
+.custom-label {
+    border-bottom: none;
+    border-top: 1px solid #5e5e5e;
+    color: white;
+    display: block;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0.3rem 0.9375rem;
+    text-transform: uppercase;
+}
 
 // .color1 {
 //   background: -webkit-linear-gradient(90deg, #EC6F66 10%, #F3A183 90%); /* Chrome 10+, Saf5.1+ */
@@ -1968,9 +2046,6 @@ html,
     z-index: 99;
 }
 
-.primary-color {
-	color: $primary-color !important;
-}
 
 
 .left-small {
