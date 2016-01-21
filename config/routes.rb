@@ -38,6 +38,8 @@ Rails.application.routes.draw do
     end
   end
 
+  match "future-workouts" => "workouts#future", :via => :get, :as => :future_workouts
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -7,10 +7,19 @@ class WorkoutsController < ApplicationController
   def leaderboard 
   end
 
+  def future
+    @workouts = Workout.where('workout_date > ?', Time.now)
+  end
+
   # GET /workouts
   # GET /workouts.json
   def index
-    @workouts = Workout.all.order('workout_date DESC')
+    if params[:category]
+      @workouts = Workout.where('workout_date > ?', Time.now)
+      redirect_to :controller => 'workouts', :action => 'future' 
+    else
+      @workouts = Workout.where('workout_date <= ?', Time.now)
+    end
   end
 
   # GET /workouts/1
