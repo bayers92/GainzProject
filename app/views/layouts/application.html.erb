@@ -48,9 +48,11 @@
 					<section class="right-small">
 						<a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
 					</section>
-					<section class = "left-small">
-						<i class="fa fa-arrow-left fa-2x" onclick="goBack()"></i>
-					</section>
+					<% if !current_page?(root_url) %>
+						<section class = "left-small">
+							<i class="fa fa-arrow-left fa-2x" onclick="goBack()"></i>
+						</section>
+					<% end %>
 				</nav>
 			</div>
 			<div class = "heading-push"></div>
