@@ -1949,6 +1949,10 @@ $color5: #FFB744;
 
 
 
+.future {
+	height: 200px !important;
+}
+
 
 // 
 // MOBILE
@@ -1996,6 +2000,9 @@ $color5: #FFB744;
 		    height: 40px;
 		    overflow: hidden;
 		}
+	}
+	.future {
+		height: 120px !important;
 	}
 }
 // MOBILE END
@@ -2070,8 +2077,5 @@ html,
 	}
 }
 
-.future {
-	height: 200px !important;
-}
 
 @import 'foundation';
