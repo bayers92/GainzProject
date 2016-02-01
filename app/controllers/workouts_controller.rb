@@ -15,7 +15,7 @@ class WorkoutsController < ApplicationController
   # GET /workouts.json
   def index
     if params[:category]
-      @workouts = Workout.where('workout_date > ?', Time.now)
+      @workouts = Workout.where('workout_date > ?', Time.now).('workout_date ASC')
       redirect_to :controller => 'workouts', :action => 'future' 
     else
       @workouts = Workout.where('workout_date <= ?', Time.now).order('workout_date DESC')

@@ -32,17 +32,17 @@
     </div>
   <% end %>
 
-  <% @n = 1 %>
   <% @workout.parts.each do |part| %>
         <% if part.wods.first || part.lifts.first != nil %>
     <div class = "small-11 medium-8 small-centered columns instance">
 
       <!-- Here -->
 
-      <h3> Part <%= @n %>: </h3>
-
       <!-- WOD STYLE WORKOUT -->
       <% if part.style == 1 %>  
+
+      <h3> Conditioning: </h3>
+
       <% part.wods.each do |wod| %>
       <div class = "show-part-details">
         <p class = "title"><%= wod.title %></p>
@@ -94,11 +94,16 @@
 
       <% elsif part.style == 2 %>  <!-- LIFT STYLE PART -->
 
+      <h3> Olympic Lift: </h3>
       <% part.lifts.each do |lift| %>
       <div class = "show-part-details">
-        <p class = "title"><%= lift.category.name %> ( <%= pluralize(lift.rep_count , 'rep') %> )</p>
-        <p class = "description"><%= lift.timing %></p>
-        <p class = "description"><%= lift.description %></p>
+        <p class = "title"><%= lift.category.name %> (<%=lift.rep_count %> rep<% if lift.max %> max<%end%>)</p>
+        <% if lift.summary != nil %>
+          <p class = "description"> <%= simple_format(lift.summary) %> </p>
+        <% else %>
+          <p class = "description"><%= lift.timing %></p>
+          <p class = "description"><%= lift.description %></p>
+        <% end %>
         <!-- <p class = "rep-count"><%= lift.rep_count %></p> -->
         <% @my_lift_id = lift.id %>
       </div>
@@ -147,7 +152,6 @@
       <!-- END IF PART STYLE != 0 -->
     </div>
 
-    <% @n += 1 %>
     <% end %>
   <% end %>
 
