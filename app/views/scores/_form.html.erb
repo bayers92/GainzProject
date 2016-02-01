@@ -3,6 +3,7 @@
 
   <div class="form-inputs">
     <%= f.input :result %>
+   <%= f.input :rx, inline_label: 'Rx' %>
     <%= f.association :user, :as => :hidden %>
     <%= f.association :lift, :as => :hidden %>
     <%= f.association :wod, :as => :hidden %>

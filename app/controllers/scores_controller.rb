@@ -97,7 +97,7 @@ class ScoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def score_params
-      params.require(:score).permit(:result, :user_id, :lift_id, :wod_id,)
+      params.require(:score).permit(:result, :user_id, :lift_id, :wod_id, :rx)
     end
 
     def search_params
