@@ -1949,9 +1949,9 @@ $color5: #FFB744;
 
 
 
-.future {
-	height: 200px !important;
-}
+// .future {
+// 	height: 200px !important;
+// }
 
 
 // 
@@ -2000,9 +2000,6 @@ $color5: #FFB744;
 		    height: 40px;
 		    overflow: hidden;
 		}
-	}
-	.future {
-		height: 120px !important;
 	}
 }
 // MOBILE END
@@ -2077,5 +2074,12 @@ html,
 	}
 }
 
+.future {
+	height: auto !important;
+	border-left: none !important;
+	.workout-index .title {
+		height: 40px !important;
+	}
+}
 
 @import 'foundation';
