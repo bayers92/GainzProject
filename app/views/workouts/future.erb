@@ -16,8 +16,8 @@
 		</div>
 		<% @z = 2 %>
 		<% @workouts.each do |workout| %>
-				<div class = "color<%=@z%> future">
-					<p class = "date"><%= workout.workout_date.to_formatted_s(:day_of_week) %> </p>
+				<div class = "color<%=@z%> future future-day-workout">
+					<p class = "date"><strong><%= workout.workout_date.to_formatted_s(:day_of_week) %> </strong></p>
 					<h2 class = "title"><%= workout.title  %></h2>
 					<% if admin_signed_in? %>
 						<p class = "edit-links smaller-text">
