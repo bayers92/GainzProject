@@ -1,11 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+
 <% if @lifts.first != nil %>
   <h1><%= @lifts.first.category.name %></h1>
   <p> *Denotes max effort lift </p>
 <% else %>
   <h4> You do not have any recorded scores for this lift </h4>
 <% end %>
+
+
+<a href="#" data-reveal-id="myModal" id ="add-lift"><i class="fa fa-plus"></i> Add Score</a>
+<br/><br/>
 
 
 
@@ -25,12 +30,19 @@
     <% @lifts.first(5).each do |lift| %>
         <% lift.scores.each do |score| %>
           <% if score.user_id == current_user.id %>
-          <tr>
-            <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> </td> 
-            <td><%= lift.rep_count %></td>
-            <td><%= score.result %><% if lift.max? %>*<%end%> </td>
-            <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
-          </tr>
+            <tr>
+            <% if score.lift.part != nil %>
+                <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> </td> 
+                <td><%= lift.rep_count %></td>
+                <td><%= score.result %><% if lift.max? %>*<%end%> </td>
+                <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
+            <% else %>
+                <td><%= score.lift.lift_date.to_formatted_s(:my_short_ordinal) %> </td> 
+                <td><%= lift.rep_count %></td>
+                <td><%= score.result %><% if lift.max? %>*<%end%> </td>
+                <td><%= link_to 'Delete', score, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+            <% end %>
+            </tr>
           <% end %>
         <% end%>
     <% end %>
@@ -50,11 +62,17 @@
       <% if lift.rep_count == 1 %>
         <% lift.scores.each do |score| %>
           <% if score.user_id == current_user.id %>
-          <tr>
-            <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> </td> 
-            <td><%= score.result %><% if lift.max? %>*<%end%> </td>
-            <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
-          </tr>
+            <tr>
+            <% if score.lift.part != nil %>
+                <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> </td> 
+                <td><%= score.result %><% if lift.max? %>*<%end%> </td>
+                <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
+            <% else %>
+                <td><%= score.lift.lift_date.to_formatted_s(:my_short_ordinal) %> </td> 
+                <td><%= score.result %><% if lift.max? %>*<%end%> </td>
+                <td>Manual Enter </td>
+            <% end %>
+            </tr>
           <% end %>
         <% end%>
       <% end %>
@@ -76,17 +94,23 @@
       <% if lift.rep_count == 2 %>
         <% lift.scores.each do |score| %>
           <% if score.user_id == current_user.id %>
-          <tr>
-            <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> </td> 
-            <td><%= score.result %><% if lift.max? %>*<%end%> </td>
-            <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
-          </tr>
+            <tr>
+            <% if score.lift.part != nil %>
+                <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> </td> 
+                <td><%= score.result %><% if lift.max? %>*<%end%> </td>
+                <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
+            <% else %>
+                <td><%= score.lift.lift_date.to_formatted_s(:my_short_ordinal) %> </td> 
+                <td><%= score.result %><% if lift.max? %>*<%end%> </td>
+                <td>Manual Enter </td>
+            <% end %>
+            </tr>
           <% end %>
         <% end%>
       <% end %>
     <% end %>
   </table>
-<br/>
+  <br/>
   <!-- TABLE FOR 3 REP MAX -->
   <table>
     <h4> 3 Rep Scores </h4>
@@ -101,11 +125,17 @@
       <% if lift.rep_count == 3 %>
         <% lift.scores.each do |score| %>
           <% if score.user_id == current_user.id %>
-          <tr>
-            <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> </td> 
-            <td><%= score.result %><% if lift.max? %>*<%end%> </td>
-            <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
-          </tr>
+            <tr>
+            <% if score.lift.part != nil %>
+                <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> </td> 
+                <td><%= score.result %><% if lift.max? %>*<%end%> </td>
+                <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
+            <% else %>
+                <td><%= score.lift.lift_date.to_formatted_s(:my_short_ordinal) %> </td> 
+                <td><%= score.result %><% if lift.max? %>*<%end%> </td>
+                <td>Manual Enter </td>
+            <% end %>
+            </tr>
           <% end %>
         <% end%>
       <% end %>
@@ -126,11 +156,17 @@
       <% if lift.rep_count == 4 %>
         <% lift.scores.each do |score| %>
           <% if score.user_id == current_user.id %>
-          <tr>
-            <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> </td> 
-            <td><%= score.result %><% if lift.max? %>*<%end%> </td>
-            <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
-          </tr>
+            <tr>
+            <% if score.lift.part != nil %>
+                <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> </td> 
+                <td><%= score.result %><% if lift.max? %>*<%end%> </td>
+                <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
+            <% else %>
+                <td><%= score.lift.lift_date.to_formatted_s(:my_short_ordinal) %> </td> 
+                <td><%= score.result %><% if lift.max? %>*<%end%> </td>
+                <td>Manual Enter </td>
+            <% end %>
+            </tr>
           <% end %>
         <% end%>
       <% end %>
@@ -151,17 +187,32 @@
       <% if lift.rep_count == 5 %>
         <% lift.scores.each do |score| %>
           <% if score.user_id == current_user.id %>
-          <tr>
-            <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> </td> 
-            <td><%= score.result %><% if lift.max? %>*<%end%> </td>
-            <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
-          </tr>
+            <tr>
+            <% if score.lift.part != nil %>
+                <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> </td> 
+                <td><%= score.result %><% if lift.max? %>*<%end%> </td>
+                <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
+            <% else %>
+                <td><%= score.lift.lift_date.to_formatted_s(:my_short_ordinal) %> </td> 
+                <td><%= score.result %><% if lift.max? %>*<%end%> </td>
+                <td>Manual Enter </td>
+            <% end %>
+            </tr>
           <% end %>
         <% end%>
       <% end %>
     <% end %>
   </table>
-<br/>
+  <br/>
 <% end %>
 
 <br>
+
+
+ <div id="myModal" class="reveal-modal" data-reveal>
+  <div class = "small-12 columns">
+    <br/><br/>
+    <%= render 'lifts/form' %>
+  </div>
+  <a class="close-reveal-modal">&#215;</a>
+ </div>

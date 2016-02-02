@@ -79,12 +79,20 @@ class ScoresController < ApplicationController
     else
       @x = Lift.find(@score.lift_id)
     end
-    @part = Part.find(@x.part_id)
-    @workout = Workout.find(@part.workout_id)
+    if @x.part != nil
+      @part = Part.find(@x.part_id)
+    end
+    if @x.part != nil
+      @workout = Workout.find(@part.workout_id)
+    end
 
     @score.destroy
     respond_to do |format|
-      format.html { redirect_to @workout, notice: 'Score was successfully destroyed.' }
+      if @workout != nil
+        format.html { redirect_to @workout, notice: 'Score was successfully destroyed.' }
+      else
+        format.html { redirect_to :back, notice: 'Score was successfully destroyed.' }
+      end
       format.json { head :no_content }
     end
   end

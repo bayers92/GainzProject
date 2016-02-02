@@ -7,6 +7,8 @@ class LiftsController < ApplicationController
   # GET /lifts.json
   def index
     @lifts = apply_scopes(Lift).all.order('created_at DESC')
+    @lift = Lift.new
+    @score = @lift.scores.build
   end
 
   # GET /lifts/1
@@ -27,14 +29,22 @@ class LiftsController < ApplicationController
   # POST /lifts.json
   def create
     @lift = Lift.new(lift_params)
-    @part = Part.find(@lift.part_id)
-    @workout = Workout.find(@part.workout_id)
+    if @part != nil
+      @part = Part.find(@lift.part_id)
+    end
+    if @workout != nil
+      @workout = Workout.find(@part.workout_id)
+    end
     @lift.style = @lift.category.style
     @lift.save
 
     respond_to do |format|
       if @lift.save
-        format.html { redirect_to @workout, notice: 'Lift was successfully created.' }
+        if @workout != nil
+          format.html { redirect_to @workout, notice: 'Lift was successfully created.' }
+        else
+          format.html { redirect_to :back, notice: 'Lift was successfully created.' }
+        end
         format.json { render :show, status: :created, location: @lift }
       else
         format.html { render :new }
@@ -82,6 +92,6 @@ class LiftsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lift_params
-      params.require(:lift).permit(:style, :description, :rep_count, :part_id, :category_id, :timing, :max, :summary)
+      params.require(:lift).permit(:style, :description, :rep_count, :part_id, :category_id, :timing, :max, :summary, :lift_date, :scores_attributes => [:result, :user_id])
     end
 end
