@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 
+
+<% if admin_signed_in? || user_signed_in? %>
+
+
   <h1><%= @category.name %></h1>
   <p> *Denotes max effort lift </p>
 <% if @lifts.first.scores == nil %>
@@ -214,3 +218,11 @@
   </div>
   <a class="close-reveal-modal">&#215;</a>
  </div>
+
+
+ <% else %>
+  <div class = "small-11 medium-8 small-centered columns instance">
+    <p> Please <u><%= link_to('login', new_user_session_path)  %></u> to view the workout </p>
+
+  </div>
+<% end %>
