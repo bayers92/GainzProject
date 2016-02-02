@@ -7,6 +7,8 @@ class LiftsController < ApplicationController
   # GET /lifts.json
   def index
     @lifts = apply_scopes(Lift).all.order('created_at DESC')
+    @style = params[:by_style]
+    @category = Category.find(params[:by_style])
     @lift = Lift.new
     @score = @lift.scores.build
   end

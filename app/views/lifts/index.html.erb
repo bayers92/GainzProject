@@ -1,17 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 
-<% if @lifts.first != nil %>
-  <h1><%= @lifts.first.category.name %></h1>
+  <h1><%= @category.name %></h1>
   <p> *Denotes max effort lift </p>
-<% else %>
+<% if @lifts.first.scores == nil %>
   <h4> You do not have any recorded scores for this lift </h4>
 <% end %>
 
 
 <a href="#" data-reveal-id="myModal" id ="add-lift"><i class="fa fa-plus"></i> Add Score</a>
 <br/><br/>
-
 
 
 <% if @lifts.first != nil %>
@@ -70,7 +68,7 @@
             <% else %>
                 <td><%= score.lift.lift_date.to_formatted_s(:my_short_ordinal) %> </td> 
                 <td><%= score.result %><% if lift.max? %>*<%end%> </td>
-                <td>Manual Enter </td>
+                <td><%= link_to 'Delete', score, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
             <% end %>
             </tr>
           <% end %>
@@ -102,7 +100,7 @@
             <% else %>
                 <td><%= score.lift.lift_date.to_formatted_s(:my_short_ordinal) %> </td> 
                 <td><%= score.result %><% if lift.max? %>*<%end%> </td>
-                <td>Manual Enter </td>
+                <td><%= link_to 'Delete', score, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
             <% end %>
             </tr>
           <% end %>
@@ -133,7 +131,7 @@
             <% else %>
                 <td><%= score.lift.lift_date.to_formatted_s(:my_short_ordinal) %> </td> 
                 <td><%= score.result %><% if lift.max? %>*<%end%> </td>
-                <td>Manual Enter </td>
+                <td><%= link_to 'Delete', score, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
             <% end %>
             </tr>
           <% end %>
@@ -164,7 +162,7 @@
             <% else %>
                 <td><%= score.lift.lift_date.to_formatted_s(:my_short_ordinal) %> </td> 
                 <td><%= score.result %><% if lift.max? %>*<%end%> </td>
-                <td>Manual Enter </td>
+                <td><%= link_to 'Delete', score, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
             <% end %>
             </tr>
           <% end %>
@@ -195,7 +193,7 @@
             <% else %>
                 <td><%= score.lift.lift_date.to_formatted_s(:my_short_ordinal) %> </td> 
                 <td><%= score.result %><% if lift.max? %>*<%end%> </td>
-                <td>Manual Enter </td>
+                <td><%= link_to 'Delete', score, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
             <% end %>
             </tr>
           <% end %>
