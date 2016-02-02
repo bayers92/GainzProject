@@ -19,7 +19,7 @@
 			<% end %>
 			<% end %>
 			<% elsif part.style == 2 %> <!-- LIFT -->
-			<strong><h2>Olympic Lift:</h2></strong>
+			<strong><h2><%= part.lifts.first.category.name %>:</h2></strong>
 			<% if part.lifts.first.scores.first == nil %>
 			<p> No scores reported </p>
 			<% else %>
