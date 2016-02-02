@@ -16,7 +16,6 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
 
 // offcanvas nav preferences
 $(document).foundation({
@@ -33,3 +32,5 @@ $(document).foundation({
 function goBack() {
     window.history.back();
 }
+
+$(function(){ $(document).foundation(); });
