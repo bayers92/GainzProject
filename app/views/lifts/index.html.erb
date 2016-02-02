@@ -7,7 +7,7 @@
 
   <h1><%= @category.name %></h1>
   <p> *Denotes max effort lift </p>
-<% if @lifts.first.scores == nil %>
+<% if @lifts.first == nil %>
   <h4> You do not have any recorded scores for this lift </h4>
 <% end %>
 
