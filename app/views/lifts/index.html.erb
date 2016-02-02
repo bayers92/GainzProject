@@ -27,7 +27,7 @@
     </thead>
     <% @lifts.first(5).each do |lift| %>
         <% lift.scores.each do |score| %>
-          <% if score.user_id == current_user.id %>
+          <% if score.user_id == @current_user.id %>
             <tr>
             <% if score.lift.part != nil %>
                 <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> </td> 
