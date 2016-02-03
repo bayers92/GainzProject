@@ -21,6 +21,8 @@ class LiftsController < ApplicationController
   # GET /lifts/new
   def new
     @lift = Lift.new
+    @category = Category.find(params[:lift_category])
+    @score = @lift.scores.build
   end
 
   # GET /lifts/1/edit
@@ -45,7 +47,7 @@ class LiftsController < ApplicationController
         if @workout != nil
           format.html { redirect_to @workout, notice: 'Lift was successfully created.' }
         else
-          format.html { redirect_to :back, notice: 'Lift was successfully created.' }
+          format.html { redirect_to generate_url("/lifts?by_style=", :by_style => @lift.category.id), notice: 'Lift was successfully created.' }
         end
         format.json { render :show, status: :created, location: @lift }
       else
@@ -95,5 +97,11 @@ class LiftsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def lift_params
       params.require(:lift).permit(:style, :description, :rep_count, :part_id, :category_id, :timing, :max, :summary, :lift_date, :scores_attributes => [:result, :user_id])
+    end
+
+    def generate_url(url, params = {})
+      uri = URI(url)
+      uri.query = params.to_query
+      uri.to_s
     end
 end

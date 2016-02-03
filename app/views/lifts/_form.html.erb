@@ -3,11 +3,9 @@
 
   <div class="form-inputs">
     <%= f.input :lift_date, as: :date, html5: true, :input_html => { :value => Date.today} %>
-    <% if @lifts.first != nil %>
-      <%= f.association :category, :as => :hidden, selected: @category.id %>
-    <% else %>
-    <%= f.association :category, selected: @category.id %>
-    <% end %>
+
+    <%= f.association :category, :as => :hidden, input_html: { value: @category.id } %>
+
     <%= f.input :rep_count, collection: 1..5 %>
     <%= f.input :max, inline_label: 'This is a max style lift' %>
     <%= f.fields_for :scores do |s| %>

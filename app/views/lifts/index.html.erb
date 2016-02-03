@@ -7,13 +7,28 @@
 
   <h1><%= @category.name %></h1>
   <p> *Denotes max effort lift </p>
+
+<div id = "add-lift">
+<%= link_to new_lift_path(:lift_category => @category) do %>
+  <i class="fa fa-plus"></i> Add Score
+<% end %>
+</div>
+<br/>
+<br/>
+
+
+
+
+
+
 <% if @lifts.first == nil %>
   <h4> You do not have any recorded scores for this lift </h4>
 <% end %>
 
 
-<a href="#new" data-reveal-id="myModal" id ="add-lift"><i class="fa fa-plus"></i> Add Score</a>
-<br/><br/>
+<!-- <a href="#new" data-reveal-id="myModal" id ="add-lift"><i class="fa fa-plus"></i> Add Score</a>
+<br/><br/> -->
+
 
 
 <% if @lifts.first != nil %>
@@ -210,14 +225,14 @@
 
 <br/>
 
-
+<!-- 
  <div id="myModal" class="reveal-modal" data-reveal>
   <div class = "small-12 columns">
     <br/><br/>
     <%= render 'lifts/form' %>
   </div>
   <a class="close-reveal-modal">&#215;</a>
- </div>
+ </div> -->
 
 
  <% else %>
