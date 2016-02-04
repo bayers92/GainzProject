@@ -1786,7 +1786,7 @@ $color5: #FFB744;
 	border-left: $color1 5px solid;
 }
 .color2 {
-	p, h2, .button, a {
+	p, h2, .button, a, h1 {
 		color: $color2 !important;
 	}
 	.leaderboard-button {
@@ -2093,6 +2093,11 @@ html,
     padding: 5px;
     background-color: white;
     width: 120px;
+}
+
+#weekly-title {
+	padding-bottom: 25px;
+	border: none !important;
 }
 
 @import 'foundation';

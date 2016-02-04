@@ -12,11 +12,11 @@
 <div class = "row no-padding-special">
 	<div class = "small-11 medium-6 columns small-centered workout-index future color1 instance">
 		<div class = "small-12 columns text-center">
-			<h1>Weekly Schedule </h1>
+			<h1 id ="weekly-title">Weekly Schedule </h1>
 		</div>
 		<% @z = 2 %>
 		<% @workouts.each do |workout| %>
-				<div class = "color<%=@z%> future future-day-workout">
+				<div class = "color1 future future-day-workout">
 					<p class = "date"><strong><%= workout.workout_date.to_formatted_s(:day_of_week) %> </strong></p>
 					<h2 class = "title"><%= workout.title  %></h2>
 					<% if admin_signed_in? %>
