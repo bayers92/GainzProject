@@ -4,11 +4,12 @@
     <h1><%= @workout.title %></h1>
     <p class = "date"><%= @workout.workout_date.to_formatted_s(:my_long_ordinal) %> </p>
 
-    <p class = "edit-result">
-      <% if admin_signed_in? %>
-      <%= link_to 'Edit Name/Date', edit_workout_path(@workout) %>
-      <% end %>
-    </p>
+    <%= button_to "Leaderboard", [:leaderboard, @workout], :class => "button round tiny", :method => :get  %>
+    <% if admin_signed_in? %>
+      <p class = "edit-result">
+        <%= link_to 'Edit Name/Date', edit_workout_path(@workout) %>
+      </p>
+    <% end %>
   </div>
 
 
@@ -151,8 +152,11 @@
       <!-- END TYPE FOR PART SECTION -->
       <% end %>
       <!-- END IF PART STYLE != 0 -->
-    </div>
 
+    </div>
+      <br/>
+      <br/>
+      <br/>
     <% end %>
   <% end %>
 
