@@ -8,11 +8,11 @@
   <h1><%= @category.name %></h1>
   <p> *Denotes max effort lift </p>
 
-<div id = "add-lift">
 <%= link_to new_lift_path(:lift_category => @category) do %>
-  <i class="fa fa-plus"></i> Add Score
+  <div id = "add-lift">
+    <i class="fa fa-plus"></i> Add Score
+  </div>
 <% end %>
-</div>
 <br/>
 <br/>
 
