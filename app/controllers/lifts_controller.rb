@@ -27,6 +27,7 @@ class LiftsController < ApplicationController
 
   # GET /lifts/1/edit
   def edit
+    @category = @lift.category
   end
 
   # POST /lifts
