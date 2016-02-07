@@ -34,10 +34,8 @@ class LiftsController < ApplicationController
   # POST /lifts.json
   def create
     @lift = Lift.new(lift_params)
-    if @part != nil
+    if @lift.part_id != nil
       @part = Part.find(@lift.part_id)
-    end
-    if @workout != nil
       @workout = Workout.find(@part.workout_id)
     end
     @lift.style = @lift.category.style
