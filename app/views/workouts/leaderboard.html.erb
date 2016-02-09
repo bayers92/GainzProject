@@ -1,7 +1,7 @@
 
 <% if admin_signed_in? || user_signed_in? %>
 	<div class = "row">
-		<% @workout.parts.each do |part| %>
+		<% @workout.parts.reverse.each do |part| %>
 		<div class = "small-11 medium-8 small-centered columns instance">
 			<% if part.style == 1 %> <!-- WOD -->
 			<strong><h2>Conditioning:</h2></strong>
