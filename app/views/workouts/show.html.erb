@@ -33,7 +33,7 @@
     </div>
   <% end %>
 
-  <% @workout.parts.each do |part| %>
+  <% @workout.parts.reverse.each do |part| %>
         <% if part.wods.first || part.lifts.first != nil %>
     <div class = "small-11 medium-8 small-centered columns instance">
 
