@@ -1565,7 +1565,7 @@ $sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%);
 
 .main-section {
 	min-height: 100vh;
-	padding-top: 130px;
+	padding-top: 110px;
 }
 
 .heading-push {
@@ -2098,6 +2098,12 @@ html,
 #weekly-title {
 	padding-bottom: 25px;
 	border: none !important;
+}
+
+.week-row {
+	background-color: $secondary-color;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 @import 'foundation';

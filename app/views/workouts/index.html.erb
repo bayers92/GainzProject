@@ -10,6 +10,20 @@
 </div> -->
 
 <div class = "row no-padding-special data-equalizer">
+	
+	<div class = "week-row text-center">
+		<% if @wk == 0 %>
+			<h3><a href= "/workouts?week=<%=@wk+1%>"><i class="fa fa-arrow-left"></i> </a> &nbsp;    This Week  &nbsp;   <a href= "/workouts?week=<%=@wk-1%>"><i class="fa fa-arrow-right"></i> </a></h3>
+		<% elsif @wk == -1 %>
+			<h3><a href= "/workouts?week=<%=@wk+1%>"><i class="fa fa-arrow-left"></i>   &nbsp;  Next Week  &nbsp;   </h3>
+		<% else %>
+			<h3><a href= "/workouts?week=<%=@wk+1%>"><i class="fa fa-arrow-left"></i> </a>  &nbsp;   <%= @wk %> <%= "week".pluralize(@wk) %> ago  &nbsp;   <a href= "/workouts?week=<%=@wk-1%>"><i class="fa fa-arrow-right"></i> </a> </h3>
+		<% end %>
+	</div>
+
+	<% if @workouts.size == 0 %>
+		<p class = "text-center"> No workouts have been posted yet. </p>
+	<% end %>
 	<% @z = 1 %>
 	<% @workouts.each do |workout| %>
 			<div class = "small-11 medium-6 columns small-centered workout-index color<%=@z%> data-equalizer-watch instance">

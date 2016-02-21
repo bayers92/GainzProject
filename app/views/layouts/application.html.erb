@@ -50,7 +50,9 @@
 					<section class="right-small">
 						<a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
 					</section>
-					<% if !current_page?(root_url) %>
+					<% if (current_page?('/workouts')) %>
+					<% elsif current_page?(root_url) %>
+					<% else %>
 						<section class = "left-small">
 							<i class="fa fa-arrow-left fa-2x" onclick="goBack()"></i>
 						</section>
