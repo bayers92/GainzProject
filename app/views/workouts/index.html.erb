@@ -25,6 +25,7 @@
 		<p class = "text-center"> No workouts have been posted yet. </p>
 	<% end %>
 	<% @z = 1 %>
+	<div class = "workout-index-container">
 	<% @workouts.each do |workout| %>
 			<div class = "small-11 medium-6 columns small-centered workout-index color<%=@z%> data-equalizer-watch instance">
 				<p class = "date"><%= workout.workout_date.to_formatted_s(:my_long_ordinal) %> </p>
@@ -42,6 +43,7 @@
 			<% if @z < 5 %> <% @z += 1 %> <% else %> <% @z = 1 %><%end%>
 
 	<% end %>
+	</div>
 </div>
 
 
