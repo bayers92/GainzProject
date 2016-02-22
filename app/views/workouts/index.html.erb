@@ -27,43 +27,28 @@
 	<% @z = 1 %>
 	<div class = "workout-index-container">
 		<% @workouts.each do |workout| %>
-		<% if workout.workout_date <= Date.today.end_of_day %>
-			<div class = "small-11 medium-6 columns small-centered workout-index color<%=@z%> data-equalizer-watch instance">
-				<p class = "date"><%= workout.workout_date.to_formatted_s(:my_long_ordinal) %> </p>
-				<h2 class = "title"><%= link_to workout.title, workout %></h2>
-				<%= button_to "Leaderboard", [:leaderboard, workout], :class => "button round leaderboard-button tiny", :method => :get  %>
-				<% if admin_signed_in? %>
-				<p class = "edit-links smaller-text">
-					<%= link_to 'Edit', edit_workout_path(workout) %> | 
-					<%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %>
-				</p>
-				<% end%>
-			</div>
-
-
-		<!-- FUTURE WORKOUTS -->
-		<% else %>
-			<% if admin_signed_in? %>
-				<div class = "row no-padding-special data-equalizer">
-					<div class = "small-11 medium-6 columns small-centered workout-index color<%=@z%> data-equalizer-watch instance">
-						<p class = "date"><%= workout.workout_date.to_formatted_s(:my_long_ordinal) %> </p>
-						<h2 class = "title"><%= link_to workout.title, workout %></h2>
-						<%= button_to "Leaderboard", [:leaderboard, workout], :class => "button round leaderboard-button tiny", :method => :get  %>
-						<% if admin_signed_in? %>
-						<p class = "edit-links smaller-text">
-							<%= link_to 'Edit', edit_workout_path(workout) %> | 
-							<%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %>
-						</p>
-						<% end%>
-					</div>
+			<% if workout.workout_date <= Date.today.end_of_day %>
+				<div class = "small-11 medium-6 columns small-centered workout-index color<%=@z%> data-equalizer-watch instance">
+					<p class = "date"><%= workout.workout_date.to_formatted_s(:my_long_ordinal) %> </p>
+					<h2 class = "title"><%= link_to workout.title, workout %></h2>
+					<%= button_to "Leaderboard", [:leaderboard, workout], :class => "button round leaderboard-button tiny", :method => :get  %>
+					<% if admin_signed_in? %>
+					<p class = "edit-links smaller-text">
+						<%= link_to 'Edit', edit_workout_path(workout) %> | 
+						<%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %>
+					</p>
+					<% end%>
 				</div>
-			<% else %>
 
-				<div class = "row no-padding-special">
-					<div class = "small-11 medium-6 columns small-centered workout-index future color1 instance">
-						<div class = "color1 future future-day-workout">
-							<p class = "date"><strong><%= workout.workout_date.to_formatted_s(:day_of_week) %> </strong></p>
-							<h2 class = "title"><%= workout.title  %></h2>
+
+			<!-- FUTURE WORKOUTS -->
+			<% else %>
+				<% if admin_signed_in? %>
+					<div class = "row no-padding-special data-equalizer">
+						<div class = "small-11 medium-6 columns small-centered workout-index color<%=@z%> data-equalizer-watch instance">
+							<p class = "date"><%= workout.workout_date.to_formatted_s(:my_long_ordinal) %> </p>
+							<h2 class = "title"><%= link_to workout.title, workout %></h2>
+							<%= button_to "Leaderboard", [:leaderboard, workout], :class => "button round leaderboard-button tiny", :method => :get  %>
 							<% if admin_signed_in? %>
 							<p class = "edit-links smaller-text">
 								<%= link_to 'Edit', edit_workout_path(workout) %> | 
@@ -72,12 +57,27 @@
 							<% end%>
 						</div>
 					</div>
-				</div>
-			<% end %>
-		<% end %>
+				<% else %>
 
-		<!-- Increment color selector until 5 -->
-		<% if @z < 5 %> <% @z += 1 %> <% else %> <% @z = 1 %><%end%>
+					<div class = "row no-padding-special">
+						<div class = "small-11 medium-6 columns small-centered workout-index future color<%=@z%> instance">
+							<div class = "color1 future future-day-workout">
+								<p class = "date"><strong><%= workout.workout_date.to_formatted_s(:day_of_week) %> </strong></p>
+								<h2 class = "title"><%= workout.title  %></h2>
+								<% if admin_signed_in? %>
+								<p class = "edit-links smaller-text">
+									<%= link_to 'Edit', edit_workout_path(workout) %> | 
+									<%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %>
+								</p>
+								<% end%>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			<% end %>
+
+			<!-- Increment color selector until 5 -->
+			<% if @z < 5 %> <% @z += 1 %> <% else %> <% @z = 1 %><%end%>
 
 		<% end %>
 	</div>
