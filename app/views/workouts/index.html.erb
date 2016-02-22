@@ -13,20 +13,21 @@
 	
 	<div class = "week-row text-center">
 		<% if @wk == 0 %>
-			<h3><a href= "/workouts?week=<%=@wk+1%>"><i class="fa fa-arrow-left"></i> </a> &nbsp;    This Week  &nbsp;   <a href= "/workouts?week=<%=@wk-1%>"><i class="fa fa-arrow-right"></i> </a></h3>
+		<h3><a href= "/workouts?week=<%=@wk+1%>"><i class="fa fa-arrow-left"></i> </a> &nbsp;    This Week  &nbsp;   <a href= "/workouts?week=<%=@wk-1%>"><i class="fa fa-arrow-right"></i> </a></h3>
 		<% elsif @wk == -1 %>
-			<h3><a href= "/workouts?week=<%=@wk+1%>"><i class="fa fa-arrow-left"></i>   &nbsp;  Next Week  &nbsp;   </h3>
+		<h3><a href= "/workouts?week=<%=@wk+1%>"><i class="fa fa-arrow-left"></i>   &nbsp;  Next Week  &nbsp;   </h3>
 		<% else %>
-			<h3><a href= "/workouts?week=<%=@wk+1%>"><i class="fa fa-arrow-left"></i> </a>  &nbsp;   <%= @wk %> <%= "week".pluralize(@wk) %> ago  &nbsp;   <a href= "/workouts?week=<%=@wk-1%>"><i class="fa fa-arrow-right"></i> </a> </h3>
+		<h3><a href= "/workouts?week=<%=@wk+1%>"><i class="fa fa-arrow-left"></i> </a>  &nbsp;   <%= @wk %> <%= "week".pluralize(@wk) %> ago  &nbsp;   <a href= "/workouts?week=<%=@wk-1%>"><i class="fa fa-arrow-right"></i> </a> </h3>
 		<% end %>
 	</div>
 
 	<% if @workouts.size == 0 %>
-		<p class = "text-center"> No workouts have been posted yet. </p>
+	<p class = "text-center"> No workouts have been posted yet. </p>
 	<% end %>
 	<% @z = 1 %>
 	<div class = "workout-index-container">
-	<% @workouts.each do |workout| %>
+		<% @workouts.each do |workout| %>
+		<% if workout.workout_date <= Date.today.end_of_day %>
 			<div class = "small-11 medium-6 columns small-centered workout-index color<%=@z%> data-equalizer-watch instance">
 				<p class = "date"><%= workout.workout_date.to_formatted_s(:my_long_ordinal) %> </p>
 				<h2 class = "title"><%= link_to workout.title, workout %></h2>
@@ -38,11 +39,47 @@
 				</p>
 				<% end%>
 			</div>
-			
-			<!-- Increment color selector until 5 -->
-			<% if @z < 5 %> <% @z += 1 %> <% else %> <% @z = 1 %><%end%>
 
-	<% end %>
+
+		<!-- FUTURE WORKOUTS -->
+		<% else %>
+			<% if admin_signed_in? %>
+				<div class = "row no-padding-special data-equalizer">
+					<div class = "small-11 medium-6 columns small-centered workout-index color<%=@z%> data-equalizer-watch instance">
+						<p class = "date"><%= workout.workout_date.to_formatted_s(:my_long_ordinal) %> </p>
+						<h2 class = "title"><%= link_to workout.title, workout %></h2>
+						<%= button_to "Leaderboard", [:leaderboard, workout], :class => "button round leaderboard-button tiny", :method => :get  %>
+						<% if admin_signed_in? %>
+						<p class = "edit-links smaller-text">
+							<%= link_to 'Edit', edit_workout_path(workout) %> | 
+							<%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %>
+						</p>
+						<% end%>
+					</div>
+				</div>
+			<% else %>
+
+				<div class = "row no-padding-special">
+					<div class = "small-11 medium-6 columns small-centered workout-index future color1 instance">
+						<div class = "color1 future future-day-workout">
+							<p class = "date"><strong><%= workout.workout_date.to_formatted_s(:day_of_week) %> </strong></p>
+							<h2 class = "title"><%= workout.title  %></h2>
+							<% if admin_signed_in? %>
+							<p class = "edit-links smaller-text">
+								<%= link_to 'Edit', edit_workout_path(workout) %> | 
+								<%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %>
+							</p>
+							<% end%>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+
+		<!-- Increment color selector until 5 -->
+		<% if @z < 5 %> <% @z += 1 %> <% else %> <% @z = 1 %><%end%>
+
+		<% end %>
 	</div>
 </div>
 
