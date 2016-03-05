@@ -1,16 +1,41 @@
-<%= simple_form_for(@score) do |f| %>
-  <%= f.error_notification %>
+<% if @score.wod_id != nil %>
+  <%= simple_form_for(@score) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :result %>
-   <!-- <%= f.input :rx, inline_label: 'Rx' %> -->
-    <%= f.association :user, :as => :hidden %>
-    <%= f.association :lift, :as => :hidden %>
-    <!-- <%= f.association :wod, :as => :hidden %> -->
-  </div>
+    <div class="form-inputs">
+      <%= f.input :result, label: "Result:" %>
+      <%= f.input :rx, inline_label: 'Rx' %>
+      <%= f.input :note, label: "Personal Note:" %>
+      <%= f.association :user, :as => :hidden %>
+      <%= f.association :lift, :as => :hidden %>
+      <%= f.association :wod, :as => :hidden %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+
+
+<!-- OLYMPIC LIFT -->
+<% else %>
+  <%= simple_form_for(@score) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :result, label: "Result:" %>
+      <%= f.input :note, label: "Personal Note:" %>
+     <!-- <%= f.input :rx, inline_label: 'Rx' %> -->
+      <%= f.association :user, :as => :hidden %>
+      <%= f.association :lift, :as => :hidden %>
+      <!-- <%= f.association :wod, :as => :hidden %> -->
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
 <% end %>
+
+
 <%= link_to 'Back', 'javascript:history.go(-1);' %>

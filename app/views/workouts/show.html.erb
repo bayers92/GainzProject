@@ -1,3 +1,12 @@
+<script>
+$(document).ready(function(){
+    $("#note-button").click(function(){
+        $("#note-field").toggle();
+    });
+});
+</script>
+
+
 <% if admin_signed_in? || user_signed_in? %>
 <div class = "row">
   <div class = "small-11 medium-8 small-centered columns instance">
@@ -65,6 +74,14 @@
       <div class="form-inputs">
         <%= f.input :result %>
         <%= f.input :rx, inline_label: 'Rx' %>
+        <br/>
+        <div id = "note-button">
+          <i class="fa fa-plus"></i> Add Personal Note
+        </div>
+        <div id="note-field" style="display:none">
+          <%= f.input :note, label: 'Private Note:' %>
+        </div>
+        <br/>
         <%= f.association :user, :as => :hidden, input_html: { value: current_user.id }%>
         <%= f.association :lift, :as => :hidden %>
         <%= f.association :wod, :as => :hidden %>
@@ -79,6 +96,14 @@
       <% else %> <!-- DISPLAY EXISTING SCORE -->
       <% @my_wod_score = current_user.scores.where(:wod_id => @my_wod_id).first %>
       <p class ="result"> Result: <%= @my_wod_score.result %> <% if @my_wod_score.rx %> <i class="fa fa-registered"></i> <%end%></p>
+      <% if @my_wod_score.note? %>
+        <br/>
+        <p class = "result"> 
+          <i> Personal Note: </i><br/> 
+          <%= @my_wod_score.note %> 
+        </p>
+        <br/>
+      <% end %>
       <p class = "edit-result">
         <%= link_to 'Edit Score', edit_score_path(@my_wod_score) %> | <%= link_to 'Delete Score', @my_wod_score, method: :delete, data: { confirm: 'Are you sure?' } %>
       </p>
@@ -121,6 +146,14 @@
 
       <div class="form-inputs">
         <%= f.input :result %>
+        <br/>
+        <div id = "note-button">
+          <i class="fa fa-plus"></i> Add Personal Note
+        </div>
+        <div id="note-field" style="display:none">
+          <%= f.input :note, label: 'Private Note:' %>
+        </div>
+        <br/>
         <%= f.association :user, :as => :hidden, input_html: { value: current_user.id }%>
         <%= f.association :lift, :as => :hidden %>
         <%= f.association :wod, :as => :hidden %>
@@ -134,6 +167,14 @@
       <% else %> <!-- DISPLAY EXISTING SCORE -->
       <% @my_lift_score = current_user.scores.where(:lift_id => @my_lift_id).first %>
       <p class ="result"> Result: <%= @my_lift_score.result %> </p>
+            <% if @my_lift_score.note? %>
+        <br/>
+        <p class = "result"> 
+          <i> Personal Note: </i><br/> 
+          <%= @my_lift_score.note %> 
+        </p>
+        <br/>
+      <% end %>
       <p class = "edit-result">
         <%= link_to 'Edit Score', edit_score_path(@my_lift_score) %> | <%= link_to 'Delete Score', @my_lift_score, method: :delete, data: { confirm: 'Are you sure?' } %>
       </p>

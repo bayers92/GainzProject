@@ -1,3 +1,12 @@
+<script>
+$(document).ready(function(){
+    $("#note-button").click(function(){
+        $("#note-field").toggle();
+    });
+});
+</script>
+
+
 <%= simple_form_for([@lift]) do |f| %>
   <%= f.error_notification %>
 
@@ -10,6 +19,14 @@
     <%= f.input :max, inline_label: 'This is a max style lift' %>
     <%= f.fields_for :scores do |s| %>
       <%= s.input :result %>
+      <br/>
+        <div id = "note-button">
+          <i class="fa fa-plus"></i> Add Personal Note
+        </div>
+        <div id="note-field" style="display:none">
+          <%= s.input :note, label: 'Private Note:' %>
+        </div>
+        <br/>
       <%= s.association :user, :as => :hidden, input_html: { value: current_user.id }%>
     <% end %>
 

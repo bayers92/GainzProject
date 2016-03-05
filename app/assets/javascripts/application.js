@@ -34,4 +34,9 @@ function goBack() {
 }
 
 
+
+$("#note-button").click(function(){
+    $("#note-field").toggle();
+});
+
 $(function(){ $(document).foundation(); });
