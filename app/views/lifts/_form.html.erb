@@ -13,7 +13,11 @@ $(document).ready(function(){
   <div class="form-inputs">
     <%= f.input :lift_date, as: :date, html5: true, :input_html => { :value => Date.today} %>
 
-    <%= f.association :category, :as => :hidden, input_html: { value: @category.id } %>
+    <% if current_user != nil %>
+      <%= f.association :category, :as => :hidden, input_html: { value: @category.id } %>
+    <% else %>
+      <%= f.association :category %>
+    <% end %>
 
     <%= f.input :rep_count, collection: 1..5 %>
     <%= f.input :max, inline_label: 'This is a max style lift' %>
