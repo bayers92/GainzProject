@@ -17,17 +17,19 @@ $(document).ready(function(){
 
     <%= f.input :rep_count, collection: 1..5 %>
     <%= f.input :max, inline_label: 'This is a max style lift' %>
-    <%= f.fields_for :scores do |s| %>
-      <%= s.input :result %>
-      <br/>
-        <div id = "note-button">
-          <i class="fa fa-plus"></i> Add Personal Note
-        </div>
-        <div id="note-field" style="display:none">
-          <%= s.input :note, label: 'Private Note:' %>
-        </div>
+    <% if current_user? %>
+      <%= f.fields_for :scores do |s| %>
+        <%= s.input :result %>
         <br/>
-      <%= s.association :user, :as => :hidden, input_html: { value: current_user.id }%>
+          <div id = "note-button">
+            <i class="fa fa-plus"></i> Add Personal Note
+          </div>
+          <div id="note-field" style="display:none">
+            <%= s.input :note, label: 'Private Note:' %>
+          </div>
+          <br/>
+        <%= s.association :user, :as => :hidden, input_html: { value: current_user.id }%>
+      <% end %>
     <% end %>
 
   <div class="form-actions">
