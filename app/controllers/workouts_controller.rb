@@ -17,7 +17,7 @@ class WorkoutsController < ApplicationController
     if params[:category]
       # @workouts = Workout.where('workout_date > ?', Time.now).('workout_date ASC')
 
-      @workouts = Workout.where('workout_date > ?', Time.now).('workout_date ASC')
+      @workouts = Workout.where('workout_date > ?', Time.now).order('workout_date ASC')
       redirect_to :controller => 'workouts', :action => 'future' 
     elsif [params[:week]]
       wk = [params[:week]]
@@ -26,12 +26,12 @@ class WorkoutsController < ApplicationController
       offset = 7*(@wk)
       @start_time = d - offset.days
       @end_time = 7.day.since(@start_time)
-      @workouts = Workout.where('workout_date >= ? and workout_date < ?', @start_time, @end_time).('workout_date ASC')
+      @workouts = Workout.where('workout_date >= ? and workout_date < ?', @start_time, @end_time).order('workout_date ASC')
     else
       # @workouts = Workout.where('workout_date <= ?', Time.now).order('workout_date DESC')
       start_time = Date.today.at_beginning_of_week
       end_time = 7.day.since(start_time)
-      @workouts = Workout.where('workout_date >= ? and workout_date < ?', @start_time, @end_time).('workout_date ASC')
+      @workouts = Workout.where('workout_date >= ? and workout_date < ?', @start_time, @end_time).order('workout_date ASC')
     end
   end
 
