@@ -31,7 +31,7 @@
 
       <div class="form-inputs">
         <%= f.association :category %>
-        <%= f.input :rep_count, collection: 1..5 %>
+        <%= f.input :rep_count, collection: [1,2,3,4,5,10] %>
         <%= f.input :summary %>
 <!--         <%= f.input :timing %>
         <%= f.input :description %> -->
