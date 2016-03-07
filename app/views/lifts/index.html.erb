@@ -221,6 +221,37 @@
     <% end %>
   </table>
   <br/>
+      <!-- TABLE FOR 10 REP MAX -->
+  <table>
+    <h4> 10 Rep Scores </h4>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Weight</th>
+        <th>Workout</th>
+      </tr>
+    </thead>
+    <% @lifts.each do |lift| %>
+      <% if lift.rep_count == 10 %>
+        <% lift.scores.each do |score| %>
+          <% if score.user_id == current_user.id %>
+            <tr>
+            <% if score.lift.part != nil %>
+                <td><%= score.lift.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> </td> 
+                <td><%= score.result %><% if lift.max? %>*<%end%> </td>
+                <td><%= link_to 'View Workout', score.lift.part.workout %> </td>
+            <% else %>
+                <td><%= score.lift.lift_date.to_formatted_s(:my_short_ordinal) %> </td> 
+                <td><%= score.result %><% if lift.max? %>*<%end%> </td>
+                <td><%= link_to 'Delete', score, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+            <% end %>
+            </tr>
+          <% end %>
+        <% end%>
+      <% end %>
+    <% end %>
+  </table>
+  <br/>
 <% end %>
 
 <br/>

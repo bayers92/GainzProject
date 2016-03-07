@@ -19,7 +19,7 @@ $(document).ready(function(){
       <%= f.association :category %>
     <% end %>
 
-    <%= f.input :rep_count, collection: 1..5 %>
+    <%= f.input :rep_count, collection: [1,2,3,4,5,10] %>
     <%= f.input :max, inline_label: 'This is a max style lift' %>
     <% if current_user != nil %>
       <%= f.fields_for :scores do |s| %>
