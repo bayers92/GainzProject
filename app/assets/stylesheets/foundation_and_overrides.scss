@@ -117,8 +117,18 @@ $black       : #000000;
 
 // We use these as default colors throughout
 // $primary-color: #65E0CB;
-$primary-color: #4A90E2;
-$secondary-color: #50E3C2;
+
+// BACKUP!!!
+// $primary-color: #4A90E2;
+// $secondary-color: #50E3C2;
+
+
+// NEW
+$primary-color: #6EA8D4;
+$secondary-color: gray;
+
+
+
 $wet-asphalt: #34495E;
 $dark-gray: #696969;
 $medium-gray: #C2C0C0;
@@ -2040,8 +2050,8 @@ $color5: #FFB744;
 	-khtml-border-radius: 10px;
     -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 
