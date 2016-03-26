@@ -5,7 +5,7 @@
 <% if admin_signed_in? || (current_user != nil) %>
 
 
-  <h1><%= @category.name %></h1>
+  <h1><strong><%= @category.name %></strong></h1>
   <p> *Denotes max effort lift </p>
 
 <%= link_to new_lift_path(:lift_category => @category) do %>
@@ -35,7 +35,7 @@
 
     <!-- TABLE FOR Most Recent Lifts -->
   <table>
-    <h4 class ="color-red"> Most Recent Scores </h4>
+    <h4 class ="color-red"> <strong>Most Recent Scores </h4></strong>
     <thead>
       <tr>
         <th>Date</th>
@@ -67,7 +67,7 @@
 
   <!-- TABLE FOR 1 REP MAX -->
   <table>
-    <h4> 1 Rep Scores </h4>
+   <strong> <h4> 1 Rep Scores </h4> </strong>
     <thead>
       <tr>
         <th>Date</th>
@@ -99,7 +99,7 @@
 
   <!-- TABLE FOR 2 REP MAX -->
   <table>
-    <h4> 2 Rep Scores </h4>
+    <strong><h4> 2 Rep Scores </h4></strong>
     <thead>
       <tr>
         <th>Date</th>
@@ -130,7 +130,7 @@
   <br/>
   <!-- TABLE FOR 3 REP MAX -->
   <table>
-    <h4> 3 Rep Scores </h4>
+    <strong><h4> 3 Rep Scores </h4></strong>
     <thead>
       <tr>
         <th>Date</th>
@@ -161,7 +161,7 @@
   <br/>
     <!-- TABLE FOR 4 REP MAX -->
   <table>
-    <h4> 4 Rep Scores </h4>
+    <strong><h4> 4 Rep Scores </h4></strong>
     <thead>
       <tr>
         <th>Date</th>
@@ -192,7 +192,7 @@
   <br/>
     <!-- TABLE FOR 5 REP MAX -->
   <table>
-    <h4> 5 Rep Scores </h4>
+    <strong><h4> 5 Rep Scores </h4></strong>
     <thead>
       <tr>
         <th>Date</th>
@@ -223,7 +223,7 @@
   <br/>
       <!-- TABLE FOR 10 REP MAX -->
   <table>
-    <h4> 10 Rep Scores </h4>
+   <strong> <h4> 10 Rep Scores </h4> </strong>
     <thead>
       <tr>
         <th>Date</th>
