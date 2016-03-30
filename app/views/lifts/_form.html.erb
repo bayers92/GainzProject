@@ -6,37 +6,83 @@ $(document).ready(function(){
 });
 </script>
 
+<% if admin_signed_in? %>
 
-<%= simple_form_for([@lift]) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for([@lift]) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :lift_date, as: :date, html5: true, :input_html => { :value => Date.today} %>
+    <div class="form-inputs">
+      <%= f.input :lift_date, as: :date, html5: true, :input_html => { :value => Date.today} %>
 
-    <% if current_user != nil %>
-      <%= f.association :category, :as => :hidden, input_html: { value: @category.id } %>
-    <% else %>
-      <%= f.association :category %>
-    <% end %>
-
-    <%= f.input :rep_count, collection: [1,2,3,4,5,10] %>
-    <%= f.input :max, inline_label: 'This is a max style lift' %>
-    <% if current_user != nil %>
-      <%= f.fields_for :scores do |s| %>
-        <%= s.input :result %>
-        <br/>
-          <div id = "note-button">
-            <i class="fa fa-plus"></i> Add Personal Note
-          </div>
-          <div id="note-field" style="display:none">
-            <%= s.input :note, label: 'Private Note:' %>
-          </div>
-          <br/>
-        <%= s.association :user, :as => :hidden, input_html: { value: current_user.id }%>
+      <% if current_user != nil %>
+        <%= f.association :category, :as => :hidden, input_html: { value: @category.id } %>
+      <% else %>
+        <%= f.association :category %>
       <% end %>
-    <% end %>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+      <%= f.input :rep_count, collection: [1,2,3,4,5,10] %>
+      <%= f.input :max, inline_label: 'This is a max style lift' %>
+      <%= f.input :summary %>
+      <% if current_user != nil %>
+        <%= f.fields_for :scores do |s| %>
+          <%= s.input :result %>
+          <br/>
+            <div id = "note-button">
+              <i class="fa fa-plus"></i> Add Personal Note
+            </div>
+            <div id="note-field" style="display:none">
+              <%= s.input :note, label: 'Private Note:' %>
+            </div>
+            <br/>
+          <%= s.association :user, :as => :hidden, input_html: { value: current_user.id }%>
+        <% end %>
+      <% end %>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+
+
+
+
+
+
+
+
+<% else %>
+
+  <%= simple_form_for([@lift]) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :lift_date, as: :date, html5: true, :input_html => { :value => Date.today} %>
+
+      <% if current_user != nil %>
+        <%= f.association :category, :as => :hidden, input_html: { value: @category.id } %>
+      <% else %>
+        <%= f.association :category %>
+      <% end %>
+
+      <%= f.input :rep_count, collection: [1,2,3,4,5,10] %>
+      <%= f.input :max, inline_label: 'This is a max style lift' %>
+      <% if current_user != nil %>
+        <%= f.fields_for :scores do |s| %>
+          <%= s.input :result %>
+          <br/>
+            <div id = "note-button">
+              <i class="fa fa-plus"></i> Add Personal Note
+            </div>
+            <div id="note-field" style="display:none">
+              <%= s.input :note, label: 'Private Note:' %>
+            </div>
+            <br/>
+          <%= s.association :user, :as => :hidden, input_html: { value: current_user.id }%>
+        <% end %>
+      <% end %>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
 <% end %>
