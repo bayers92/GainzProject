@@ -15,6 +15,7 @@
     	<%= f.input :title %>
         <%= f.input :description %>
         <%= f.association :part, :as => :hidden %>
+        <%= f.input :previous_wod, label: 'Previous WOD ID number' %>
       </div>
 
       <div class="form-actions">
@@ -36,6 +37,7 @@
 <!--         <%= f.input :timing %>
         <%= f.input :description %> -->
         <%= f.input :max, inline_label: 'This is a max style lift' %>
+        <%= f.input :previous_lift, label: 'Previous Lift ID number' %>
         <%= f.association :part, :as => :hidden %>
       </div>
 

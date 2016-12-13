@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305231901) do
+ActiveRecord::Schema.define(version: 20161213173234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 20160305231901) do
   create_table "lifts", force: :cascade do |t|
     t.string   "description"
     t.integer  "rep_count"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "part_id"
     t.integer  "style"
     t.integer  "category_id"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160305231901) do
     t.boolean  "max"
     t.text     "summary"
     t.datetime "lift_date"
+    t.integer  "previous_lift"
   end
 
   add_index "lifts", ["category_id"], name: "index_lifts_on_category_id", using: :btree
@@ -108,6 +109,7 @@ ActiveRecord::Schema.define(version: 20160305231901) do
     t.datetime "updated_at",   null: false
     t.string   "title"
     t.integer  "part_id"
+    t.integer  "previous_wod"
   end
 
   add_index "wods", ["part_id"], name: "index_wods_on_part_id", using: :btree

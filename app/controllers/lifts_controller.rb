@@ -95,7 +95,7 @@ class LiftsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lift_params
-      params.require(:lift).permit(:style, :description, :rep_count, :part_id, :category_id, :timing, :max, :summary, :lift_date, :scores_attributes => [:result, :user_id])
+      params.require(:lift).permit(:style, :description, :rep_count, :part_id, :category_id, :timing, :max, :summary, :lift_date, :previous_lift, :scores_attributes => [:result, :user_id])
     end
 
     def generate_url(url, params = {})

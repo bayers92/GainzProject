@@ -77,6 +77,6 @@ class WodsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wod_params
-      params.require(:wod).permit(:description, :result_label, :part_id, :title)
+      params.require(:wod).permit(:description, :result_label, :part_id, :title, :previous_wod)
     end
 end

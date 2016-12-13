@@ -59,6 +59,21 @@ $(document).ready(function(){
         <p class = "description"><%= simple_format(wod.description) %></p>
         <!-- <p class = "result-label">Record <%= wod.result_label %></p> -->
         <% @my_wod_id = wod.id %>
+        <br/>
+        <% if current_user %>
+        <p class = "previous">
+          <% if wod.previous_wod != nil %>
+            <% @p_wod = Wod.find_by(:id => wod.previous_wod) %>
+            Comparison: <%= @p_wod.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> <%= link_to "(View)", @p_wod.part.workout %><br/>
+            <% if current_user.scores.find_by(:wod_id => @p_wod) != nil %>
+              Previous score: <%= current_user.scores.find_by(:wod_id => @p_wod).result %><br/>
+              Personal note: <%= current_user.scores.find_by(:wod_id => @p_wod).note %>
+            <% else %>
+              Previous score: not reported
+            <% end %>
+          <% end %>
+          <% end %>
+        </p>
       </div>
 
 
@@ -133,6 +148,24 @@ $(document).ready(function(){
         <% end %>
         <!-- <p class = "rep-count"><%= lift.rep_count %></p> -->
         <% @my_lift_id = lift.id %>
+        <p class = "previous">
+          <% if current_user %>
+        <% if lift.previous_lift != nil %>
+          <% @p_lift = Lift.find_by(:id => lift.previous_lift) %>
+          Comparison: <%= @p_lift.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> <%= link_to "(View)", @p_lift.part.workout %><br/>
+          <% if current_user.scores.find_by(:lift_id => @p_lift) != nil %>
+            Previous score: <%= current_user.scores.find_by(:lift_id => @p_lift).result %><br/>
+            Personal note: <%= current_user.scores.find_by(:lift_id => @p_lift).note %>
+          <% else %>
+            Previous score: not reported
+          <% end %>
+        <% end %>
+        <% end %>
+        </p>
+
+
+
+
       </div>
 
       <!-- IF USER SIGNED IN -->
