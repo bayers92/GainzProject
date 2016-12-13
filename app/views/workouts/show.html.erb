@@ -66,7 +66,7 @@ $(document).ready(function(){
             <% @p_wod = Wod.find_by(:id => wod.previous_wod) %>
             Comparison: <%= @p_wod.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> <%= link_to "(View)", @p_wod.part.workout %><br/>
             <% if current_user.scores.find_by(:wod_id => @p_wod) != nil %>
-              Previous score: <%= current_user.scores.find_by(:wod_id => @p_wod).result %><br/>
+              Previous score: <%= current_user.scores.find_by(:wod_id => @p_wod).result %><% if current_user.scores.find_by(:wod_id => @p_wod).rx %> <i class="fa fa-registered"></i> <%end%><br/>
               Personal note: <%= current_user.scores.find_by(:wod_id => @p_wod).note %>
             <% else %>
               Previous score: not reported
@@ -154,7 +154,7 @@ $(document).ready(function(){
           <% @p_lift = Lift.find_by(:id => lift.previous_lift) %>
           Comparison: <%= @p_lift.part.workout.workout_date.to_formatted_s(:my_short_ordinal) %> <%= link_to "(View)", @p_lift.part.workout %><br/>
           <% if current_user.scores.find_by(:lift_id => @p_lift) != nil %>
-            Previous score: <%= current_user.scores.find_by(:lift_id => @p_lift).result %><br/>
+            Previous score: <%= current_user.scores.find_by(:lift_id => @p_lift).result %><% if current_user.scores.find_by(:lift_id => @p_lift).rx %> <i class="fa fa-registered"></i> <%end%><br/>
             Personal note: <%= current_user.scores.find_by(:lift_id => @p_lift).note %>
           <% else %>
             Previous score: not reported
